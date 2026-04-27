@@ -1,5 +1,6 @@
 """
 Django settings for attendance_system project.
+Auto-deploy verified.
 """
 
 from pathlib import Path
