@@ -15,7 +15,7 @@ import json
 import re
 from django.utils.text import slugify
 from django.contrib.auth.models import User
-from .ai_utils import analyze_timetable, analyze_academic_calendar
+from .ai_utils import analyze_timetable, analyze_academic_calendar, clean_subject_name
 
 def register(request):
     if request.method == 'POST':
@@ -42,8 +42,16 @@ def student_dashboard(request):
     start_of_week = today - timedelta(days=today.weekday())
     end_of_week = start_of_week + timedelta(days=6)
     
-    # Get enrolled subjects
-    enrollments = Enrollment.objects.filter(student=request.user, is_active=True)
+    # Get enrolled subjects with precomputed attendance stats
+    from django.db.models import Sum, Q
+    enrollments = Enrollment.objects.filter(
+        student=request.user, 
+        is_active=True
+    ).select_related('subject').annotate(
+        total_units_held=Sum('subject__attendances__units', filter=Q(subject__attendances__student=request.user)),
+        present_units=Sum('subject__attendances__units', filter=Q(subject__attendances__student=request.user, subject__attendances__status='present'))
+    )
+    
     subjects = [e.subject for e in enrollments]
     
     # Today's attendance status
@@ -57,65 +65,67 @@ def student_dashboard(request):
         date__gte=start_of_week,
         date__lte=end_of_week,
         status='present'
-    ).count()
+    ).aggregate(Sum('units'))['units__sum'] or 0
     
-    from django.db.models import Sum
     # Total statistics
     total_attendance = Attendance.objects.filter(student=request.user)
     # total_classes here means total units HELD so far (recorded)
-    total_held_units = total_attendance.aggregate(Sum('units'))['units__sum'] or 0
-    present_count = total_attendance.filter(status='present').aggregate(Sum('units'))['units__sum'] or 0
-    late_count = total_attendance.filter(status='late').aggregate(Sum('units'))['units__sum'] or 0
+    stats = total_attendance.aggregate(
+        total_held=Sum('units'),
+        present=Sum('units', filter=Q(status='present')),
+        late=Sum('units', filter=Q(status='late'))
+    )
+    total_held_units = stats['total_held'] or 0
+    present_count = stats['present'] or 0
+    late_count = stats['late'] or 0
     attendance_percentage = (present_count / total_held_units * 100) if total_held_units > 0 else 0
     
-    # Subject-wise attendance
+    # Subject-wise attendance calculation
     subject_attendance = []
-    for subject in subjects:
-        subject_qs = Attendance.objects.filter(student=request.user, subject=subject)
-        subject_total = subject_qs.aggregate(Sum('units'))['units__sum'] or 0
-        subject_present = subject_qs.filter(status='present').aggregate(Sum('units'))['units__sum'] or 0
-        subject_percentage = (subject_present / subject_total * 100) if subject_total > 0 else 0
-        subject_attendance.append({
-            'subject': subject,
-            'percentage': round(subject_percentage, 1),
-            'total': subject_total,
-            'present': subject_present
-        })
-    
-    # Recent attendance
-    recent_attendance = Attendance.objects.filter(student=request.user)[:10]
-    
-    # Notifications
-    notifications = Notification.objects.filter(
-        Q(is_global=True) | Q(target_students=request.user)
-    ).distinct()[:5]
-    
-    # Leave applications count
-    pending_leaves = LeaveApplication.objects.filter(student=request.user, status='pending').count()
-    
-    # Bunk calculation per subject using enrollment-defined total_classes
-    # and student's custom target percentage
-    for item in subject_attendance:
-        subject = item['subject']
-        p = item['present']       # classes attended (present)
-        t = item['total']         # classes held so far (present + absent)
+    for enrollment in enrollments:
+        subject = enrollment.subject
+        t = enrollment.total_units_held or 0
+        p = enrollment.present_units or 0
+        percentage = (p / t * 100) if t > 0 else 0
         
-        # Get enrollment to read target percentage and total classes
-        enrollment = Enrollment.objects.filter(student=request.user, subject=subject, is_active=True).first()
-        target = enrollment.target_percentage if enrollment else 75
-        m = enrollment.total_classes if enrollment else subject.total_classes
+        target = enrollment.target_percentage
+        m = enrollment.total_classes
         target_fraction = target / 100.0
         
-        # Bunkable = how many more classes can be skipped and still maintain target%
-        item['bunkable'] = max(0, int(p + ((1 - target_fraction) * m) - t))
-        
-        # Needs to attend = how many classes must attend to reach target% of total
-        required = int(target_fraction * m)
-        item['needs_to_attend'] = max(0, required - p)
-        
-        # Classes remaining
-        item['classes_remaining'] = max(0, m - t)
-        item['target_percentage'] = target
+        stats = enrollment.get_bunk_stats()
+        subject_attendance.append({
+            'subject': subject,
+            'percentage': stats['percentage'],
+            'total': stats['total_held'],
+            'present': stats['present'],
+            'bunkable': stats['bunkable'],
+            'needs_to_attend': stats['needs_to_attend'],
+            'classes_remaining': stats['classes_remaining'],
+            'target_percentage': enrollment.target_percentage
+        })
+
+    total_bunks_available = sum(item['bunkable'] for item in subject_attendance)
+
+    # Check if safe to bunk today
+    today_name = timezone.now().strftime('%A')
+    today_classes_entries = day_schedule.get(today_name, [])
+    safe_to_bunk_today = True if today_classes_entries else False
+    
+    for entry in today_classes_entries:
+        subj_name = entry.get('subject')
+        match_found = False
+        for sa in subject_attendance:
+            # Fuzzy match subject name
+            from .ai_utils import clean_subject_name
+            if clean_subject_name(sa['subject'].name) == clean_subject_name(subj_name) or \
+               clean_subject_name(sa['subject'].code) == clean_subject_name(subj_name):
+                if sa['bunkable'] <= 0:
+                    safe_to_bunk_today = False
+                match_found = True
+                break
+        if not match_found:
+            safe_to_bunk_today = False
+            break
 
     # Available subjects for enrollment
     if profile and profile.current_semester:
@@ -141,6 +151,17 @@ def student_dashboard(request):
                     break
         day_schedule = normalized_schedule
 
+    # Recent attendance (last 5 records)
+    recent_attendance = Attendance.objects.filter(student=request.user).order_by('-date', '-check_in_time')[:5]
+
+    # Notifications
+    notifications = Notification.objects.filter(
+        Q(is_global=True) | Q(target_students=request.user)
+    ).distinct().order_by('-created_at')[:5]
+
+    # Pending leaves
+    pending_leaves = LeaveApplication.objects.filter(student=request.user, status='pending').order_by('-applied_on')
+
     context = {
         'today_attendance': today_attendance,
         'weekly_attendance': weekly_attendance,
@@ -149,6 +170,8 @@ def student_dashboard(request):
         'attendance_percentage': round(attendance_percentage, 1),
         'total_held_units': total_held_units,
         'subject_attendance': subject_attendance,
+        'total_bunks_available': total_bunks_available,
+        'safe_to_bunk_today': safe_to_bunk_today,
         'recent_attendance': recent_attendance,
         'notifications': notifications,
         'pending_leaves': pending_leaves,
@@ -553,7 +576,7 @@ def subject_calendar(request, subject_id):
     }
     return render(request, 'attendance/subject_calendar.html', context)
 
-@csrf_exempt
+@login_required
 def ai_chat(request):
     if request.method == 'POST':
         try:
@@ -709,6 +732,12 @@ def approve_extra_holiday_report(request, report_id):
         subject = report.subject
         subject.total_classes = max(0, subject.total_classes - adjustment)
         subject.save()
+        
+        # Update all active enrollments for this subject
+        from django.db.models import F
+        Enrollment.objects.filter(subject=subject, is_active=True).update(
+            total_classes=F('total_classes') - adjustment
+        )
         
         # Send notification to all enrolled students
         enrolled_students = Enrollment.objects.filter(subject=subject, is_active=True).values_list('student', flat=True)
@@ -1087,15 +1116,20 @@ def upload_timetable(request):
         analytics = schedule.get('_analytics', {}) if isinstance(schedule, dict) else {}
         extracted_total = analytics.get('total_weekly_classes', 0)
 
-        # Get the latest processed yearly calendar
+        # Get the latest processed yearly calendar (Optional for basic sync)
         calendar = AcademicCalendar.objects.filter(is_processed=True).order_by('-year', '-id').first()
+        
         if extracted_total > 0:
+            # We call the logic regardless of calendar presence; it handles the fallback now.
+            calculate_total_classes_logic(request.user, semester_val, timetable, calendar)
+            
             if calendar and calendar.is_processed:
-                calculate_total_classes_logic(request.user, semester_val, timetable, calendar)
                 messages.success(request, 'Timetable synced! Total classes calculated using the Yearly Academic Calendar.')
-                messages.warning(request, 'Please note that due to unfamiliar holidays calculations may differ slightly.')
             else:
-                messages.warning(request, 'Timetable uploaded, but no Yearly Academic Calendar found. Please contact admin.')
+                messages.success(request, 'Timetable synced! (Using default 14-week semester as no Academic Calendar is set by admin).')
+            
+            if calendar and not calendar.is_processed:
+                messages.warning(request, 'Academic Calendar found but not processed. Using default values.')
         else:
             messages.error(request, 'Timetable upload saved, but class extraction failed. Please upload a clear full timetable with day names and bottom summary lines.')
             
@@ -1124,22 +1158,9 @@ def clarify_timetable(request):
             if len(words) == 1 and len(words[0]) <= 5: return words[0].lower()
             return "".join([w[0] for w in words if w and not w.isdigit()]).lower()
 
-        def clean_name(text):
-            if not text: return ""
-            t = str(text).lower()
-            # Remove course codes like CSE 2697, MTH-3003, etc.
-            t = re.sub(r'\b[a-z]{2,4}\s*[-]?\s*\d{3,5}\b', '', t)
-            # Remove parentheses content like (T), (P), (Theory), (Lab), (CL-501)
-            t = re.sub(r'[\(\[].*?[\)\]]', '', t)
-            # Remove common lab/practical suffixes
-            t = re.sub(r'\s+(?:lab|practical|practicals|lab-i|lab-ii|p|t|pract)\b', '', t)
-            # Remove room numbers and isolated digits
-            t = re.sub(r'\s*\d+\s*', ' ', t)
-            return t.strip()
-
         def names_match(name1, name2):
-            c1 = clean_name(name1)
-            c2 = clean_name(name2)
+            c1 = clean_subject_name(name1)
+            c2 = clean_subject_name(name2)
             if c1 == c2: return True
             a1 = _acronym(c1)
             a2 = _acronym(c2)
@@ -1157,7 +1178,7 @@ def clarify_timetable(request):
         for item in clarifications:
             subject = item.get('subject')
             if not subject: continue
-            subject_clean = clean_name(subject)
+            subject_clean = clean_subject_name(subject)
             subject_slug = slugify(subject)
             debug_log.append(f"Processing: {subject} (Clean: {subject_clean}, Slug: {subject_slug})")
             
@@ -1230,9 +1251,8 @@ def clarify_timetable(request):
         
         # Now trigger the final semester calculation
         calendar = AcademicCalendar.objects.filter(is_processed=True).order_by('-year', '-id').first()
-        if calendar:
-            calculate_total_classes_logic(request.user, timetable.semester, timetable, calendar)
-            messages.success(request, 'Timetable finalized with your clarifications!')
+        calculate_total_classes_logic(request.user, timetable.semester, timetable, calendar)
+        messages.success(request, 'Timetable finalized with your clarifications!')
         
         # Cleanup session
         del request.session['timetable_clarification']
@@ -1249,61 +1269,63 @@ def clarify_timetable(request):
 
 def calculate_total_classes_logic(user, semester, timetable, calendar):
     # Get the specific semester data from the yearly calendar
-    sem_field = f'sem{semester}_data'
-    sem_data = getattr(calendar, sem_field, {})
+    sem_data = {}
+    if calendar:
+        sem_field = f'sem{semester}_data'
+        sem_data = getattr(calendar, sem_field, {})
     
-    if not sem_data:
-        return
+    start = None
+    end = None
+    all_holidays = set()
+
+    if sem_data:
+        start_str = sem_data.get('start')
+        end_str = sem_data.get('end')
         
-    start_str = sem_data.get('start')
-    end_str = sem_data.get('end')
-    
-    if not start_str or not end_str:
-        return
-        
-    try:
-        start = date.fromisoformat(start_str)
-        end = date.fromisoformat(end_str)
-    except (ValueError, TypeError):
-        return
-    
-    # Merge semester-specific holidays and global holidays
-    sem_holidays_raw = sem_data.get('holidays', []) if isinstance(sem_data.get('holidays', []), list) else []
-    sem_holidays = []
-    for d in sem_holidays_raw:
-        try:
-            sem_holidays.append(date.fromisoformat(d))
-        except (ValueError, TypeError):
-            pass
-    
-    global_holidays_data = calendar.holidays_data if calendar.holidays_data else []
-    global_holidays = []
-    for h in global_holidays_data:
-        try:
-            d_str = h['date'] if isinstance(h, dict) else h
-            global_holidays.append(date.fromisoformat(d_str))
-        except (ValueError, TypeError):
-            pass
-            
-    all_holidays = set(sem_holidays + global_holidays)
+        if start_str and end_str:
+            try:
+                start = date.fromisoformat(start_str)
+                end = date.fromisoformat(end_str)
+                
+                # Merge semester-specific holidays and global holidays
+                sem_holidays_raw = sem_data.get('holidays', []) if isinstance(sem_data.get('holidays', []), list) else []
+                sem_holidays = []
+                for d in sem_holidays_raw:
+                    try:
+                        sem_holidays.append(date.fromisoformat(d))
+                    except (ValueError, TypeError): pass
+                
+                global_holidays_data = calendar.holidays_data if calendar.holidays_data else []
+                global_holidays = []
+                for h in global_holidays_data:
+                    try:
+                        d_str = h['date'] if isinstance(h, dict) else h
+                        global_holidays.append(date.fromisoformat(d_str))
+                    except (ValueError, TypeError): pass
+                
+                all_holidays = set(sem_holidays + global_holidays)
+            except (ValueError, TypeError):
+                start = None
+                end = None
     
     schedule = timetable.schedule_json
     day_entries = (schedule.get('_analytics', {}) if isinstance(schedule, dict) else {}).get('day_entries', {})
     if not isinstance(day_entries, dict):
         day_entries = {}
 
-    # Define the valid teaching days
-    days_of_week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-
     # 1. Calculate precise teaching day counts (excluding Sundays and holidays)
-    teaching_day_counts = {day: 0 for day in days_of_week}
-    curr = start
-    while curr <= end:
-        if curr.weekday() < 6 and curr not in all_holidays:  # weekday() < 6 excludes Sunday
-            day_name = curr.strftime('%A')
-            if day_name in teaching_day_counts:
-                teaching_day_counts[day_name] += 1
-        curr += timedelta(days=1)
+    days_of_week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    teaching_day_counts = {day: 14 for day in days_of_week} # Default to 14 weeks if no calendar
+
+    if start and end:
+        teaching_day_counts = {day: 0 for day in days_of_week}
+        curr = start
+        while curr <= end:
+            if curr.weekday() < 6 and curr not in all_holidays:  # weekday() < 6 excludes Sunday
+                day_name = curr.strftime('%A')
+                if day_name in teaching_day_counts:
+                    teaching_day_counts[day_name] += 1
+            curr += timedelta(days=1)
 
     # 2. Calculate Total Expected units for each subject
     subject_semester_totals = {}
@@ -1345,19 +1367,7 @@ def calculate_total_classes_logic(user, semester, timetable, calendar):
         parsed_name_clean = (parsed_name or '').lower().strip()
         if not parsed_name_clean: return None
         
-        def _clean_base(text):
-            t = (text or '').lower()
-            # Remove course codes like CSE 2697, MTH-3003, etc.
-            t = re.sub(r'\b[a-z]{2,4}\s*[-]?\s*\d{3,5}\b', '', t)
-            # Remove parentheses content like (T), (P), (Theory), (Lab)
-            t = re.sub(r'[\(\[].*?[\)\]]', '', t)
-            # Remove common lab/practical suffixes
-            t = re.sub(r'\s+(?:lab|practical|practicals|lab-i|lab-ii|p|t|pract)\b', '', t)
-            # Remove room numbers and isolated digits
-            t = re.sub(r'\s*\d+\s*', ' ', t)
-            return t.strip()
-
-        base_parsed = _clean_base(parsed_name_clean)
+        base_parsed = clean_subject_name(parsed_name_clean)
         parsed_tokens = _tokens(base_parsed)
         parsed_acr = _acronym(base_parsed)
 
@@ -1367,7 +1377,7 @@ def calculate_total_classes_logic(user, semester, timetable, calendar):
         for subj in semester_subjects:
             subj_name_raw = subj.name.lower()
             subj_code_raw = subj.code.lower()
-            subj_base = _clean_base(subj.name)
+            subj_base = clean_subject_name(subj.name)
             subj_acr = _acronym(subj_base)
             
             score = 0
@@ -1417,7 +1427,14 @@ def calculate_total_classes_logic(user, semester, timetable, calendar):
                 while Subject.objects.filter(code=code).exists():
                     code = f"{base_code}{suffix}"
                     suffix += 1
-                matched = Subject.objects.create(name=clean_name, code=code, semester=semester)
+                matched = Subject.objects.create(
+                    name=clean_name, 
+                    code=code, 
+                    semester=semester,
+                    teacher_name="TBD",
+                    time_slot="TBD",
+                    room_number="TBD"
+                )
         
         if matched:
             subject_updates[matched] = subject_updates.get(matched, 0) + total_expected

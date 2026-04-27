@@ -54,7 +54,7 @@
         width: 100px;
         height: 100px;
         background: var(--accent-cyan);
-        filter: blur(80px);
+        filter: blur(40px);
         opacity: 0.1;
         pointer-events: none;
     }
@@ -209,6 +209,32 @@
     </div>
 </section>
 
+{% if safe_to_bunk_today %}
+<div class="alert glass-card border-0 mb-4" style="background: rgba(16, 185, 129, 0.1); border-left: 5px solid var(--accent-emerald) !important; border-radius: 15px;">
+    <div class="d-flex align-items-center gap-3 p-2">
+        <div class="bg-emerald p-3 rounded-circle" style="background: rgba(16, 185, 129, 0.2);">
+            <i class="fas fa-umbrella-beach text-emerald fs-4"></i>
+        </div>
+        <div>
+            <h5 class="mb-1 text-emerald fw-bold">Safe to Bunk!</h5>
+            <p class="mb-0 text-muted small">Your attendance margin for today's classes is high enough. You can safely miss today without falling below your targets.</p>
+        </div>
+    </div>
+</div>
+{% elif day_schedule|get_item:now|date:"l" %}
+<div class="alert glass-card border-0 mb-4" style="background: rgba(244, 63, 94, 0.1); border-left: 5px solid var(--accent-rose) !important; border-radius: 15px;">
+    <div class="d-flex align-items-center gap-3 p-2">
+        <div class="bg-rose p-3 rounded-circle" style="background: rgba(244, 63, 94, 0.2);">
+            <i class="fas fa-exclamation-triangle text-rose fs-4"></i>
+        </div>
+        <div>
+            <h5 class="mb-1 text-rose fw-bold">Critical Day</h5>
+            <p class="mb-0 text-muted small">You have classes today that are near or below your target percentage. Bunking today is NOT recommended.</p>
+        </div>
+    </div>
+</div>
+{% endif %}
+
 <div class="stats-grid">
     <div class="stat-card glass-card">
         <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
@@ -220,6 +246,12 @@
         <div class="stat-icon text-emerald"><i class="fas fa-check-double"></i></div>
         <div class="stat-label">Total Classes Attended</div>
         <div class="stat-value">{{ present_count }}</div>
+    </div>
+
+    <div class="stat-card glass-card">
+        <div class="stat-icon text-rose"><i class="fas fa-bed"></i></div>
+        <div class="stat-label">Total Bunks Available</div>
+        <div class="stat-value text-rose">{{ total_bunks_available }}</div>
     </div>
 
     <div class="stat-card glass-card ai-sync-card">

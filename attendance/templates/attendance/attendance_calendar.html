@@ -274,7 +274,7 @@
             <div class="modal-body p-4 pt-0">
                 <p class="text-muted mb-4">Marking status for <strong id="modalDateDisplay" class="text-main"></strong></p>
                 
-                <form id="attendanceForm" method="POST" action="{% url 'mark_attendance_json' %}">
+                <form id="attendanceForm" method="POST" action="">
                     {% csrf_token %}
                     <input type="hidden" name="date" id="input_date">
                     <input type="hidden" name="subject_id" value="{{ subject.id }}">
@@ -330,9 +330,29 @@
         modal.show();
     }
 
-    function submitStatus(status) {
-        document.getElementById('input_status').value = status;
-        document.getElementById('attendanceForm').submit();
+    async function submitStatus(status) {
+        const date = document.getElementById('input_date').value;
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        try {
+            const response = await fetch(window.location.href, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+                body: JSON.stringify({ date: date, status: status })
+            });
+            const result = await response.json();
+            if (result.success) {
+                location.reload();
+            } else {
+                alert('Error updating attendance: ' + result.error);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An unexpected error occurred.');
+        }
     }
 </script>
 {% endblock %}

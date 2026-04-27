@@ -17,9 +17,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-default-key-change-this')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['*'] # Refine this with your Render URL later
+ALLOWED_HOSTS = [
+    'attendance-system-iter.onrender.com', 
+    'attendance-system.railway.app',
+    '127.0.0.1',
+    'localhost'
+]
 
 # Application definition
 INSTALLED_APPS = [
@@ -123,10 +128,12 @@ MESSAGE_TAGS = {
 
 # External APIs
 GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
-OCR_API_KEY = os.environ.get('OCR_API_KEY', 'K82079898488957')
+OCR_API_KEY = os.environ.get('OCR_API_KEY')
 
-# CSRF Trusted Origins for production
+# CSRF Trusted Origins for production and local development
 CSRF_TRUSTED_ORIGINS = [
     'https://*.render.com',
-    'https://*.railway.app'
+    'https://*.railway.app',
+    'http://127.0.0.1:8000',
+    'http://localhost:8000'
 ]

@@ -52,6 +52,34 @@ class Enrollment(models.Model):
     def __str__(self):
         return f"{self.student.username} - {self.subject.name}"
 
+    def get_bunk_stats(self):
+        from django.db.models import Sum, Q
+        # Use existing attendance records for this student and subject
+        stats = self.subject.attendances.filter(student=self.student).aggregate(
+            total_held=Sum('units'),
+            present=Sum('units', filter=Q(status='present')),
+            late=Sum('units', filter=Q(status='late'))
+        )
+        
+        t = stats['total_held'] or 0
+        p = (stats['present'] or 0) + (stats['late'] or 0)
+        m = self.total_classes
+        target_fraction = self.target_percentage / 100.0
+        
+        percentage = (p / t * 100) if t > 0 else 0
+        bunkable = max(0, int(p + ((1 - target_fraction) * m) - t))
+        needs_to_attend = max(0, int(target_fraction * m) - p)
+        
+        return {
+            'percentage': round(percentage, 1),
+            'total_held': t,
+            'present': p,
+            'bunkable': bunkable,
+            'needs_to_attend': needs_to_attend,
+            'classes_remaining': max(0, m - t),
+            'total_expected': m
+        }
+
 class Attendance(models.Model):
     ATTENDANCE_TYPES = [
         ('present', 'Present'),

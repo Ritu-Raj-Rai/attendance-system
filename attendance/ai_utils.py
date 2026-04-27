@@ -15,6 +15,25 @@ if GEMINI_API_KEY:
     genai.configure(api_key=GEMINI_API_KEY)
 
 
+def clean_subject_name(text):
+    """
+    Standardized subject name cleaning for matching Theory and Lab components.
+    Preserves digits that are part of subject identity (e.g. AD2, MLW 2).
+    """
+    if not text: return ""
+    t = str(text).lower()
+    # Remove course codes like CSE 2697, MTH-3003, etc.
+    # We use a slightly more conservative regex to avoid catching short subject names
+    t = re.sub(r'\b[a-z]{2,4}\s*[-]?\s*\d{3,5}\b', '', t)
+    # Remove parentheses content like (T), (P), (Theory), (Lab)
+    t = re.sub(r'[\(\[].*?[\)\]]', '', t)
+    # Remove common lab/practical/theory suffixes
+    t = re.sub(r'\s+(?:lab|practical|practicals|lab-i|lab-ii|p|t|pract|theory)\b', '', t)
+    # Clean up multiple spaces
+    t = re.sub(r'\s+', ' ', t)
+    return t.strip()
+
+
 def _download_link_as_image(link):
     """
     Downloads a file from a public link (Box, Google Drive, OneDrive, etc.)
@@ -369,21 +388,14 @@ def analyze_timetable(image_path=None, link=None):
             computed_total = 0
             classes_per_day = {}
             summary_by_subject = {}
-
-            def _clean_sub(text):
-                t = (text or '').lower()
-                t = re.sub(r'[\(\[].*?[\)\]]', '', t)
-                t = re.sub(r'\s+(?:lab|practical|practicals|lab-i|lab-ii|p|t|pract)\b', '', t)
-                t = re.sub(r'\s*\d+\s*', ' ', t)
-                return t.strip()
-
             summary_by_base = {}
+
             for day, entries in day_entries.items():
                 day_total = 0
                 if isinstance(entries, list):
                     for entry in entries:
                         sub_raw = entry.get('subject', 'Unknown')
-                        sub_base = _clean_sub(sub_raw)
+                        sub_base = clean_subject_name(sub_raw)
                         is_lab = entry.get('is_lab', False)
                         
                         if sub_base not in summary_by_base:
@@ -430,7 +442,7 @@ def analyze_timetable(image_path=None, link=None):
                     display_subject = grid_names[0] # Use the actual name from the grid
                     
                     # Find if already flagged and update/add
-                    flagged_item = next((c for c in parsed['_analytics']['needs_clarification'] if _clean_sub(c.get('subject')) == base), None)
+                    flagged_item = next((c for c in parsed['_analytics']['needs_clarification'] if clean_subject_name(c.get('subject')) == base), None)
                     if flagged_item:
                         flagged_item['subject'] = display_subject # Update to use grid name
                         flagged_item['is_per_day_slot_clarification'] = True
