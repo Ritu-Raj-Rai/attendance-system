@@ -1,0 +1,391 @@
+{% extends 'attendance/base.html' %}
+
+{% block title %}Manage Extra Holiday Reports{% endblock %}
+
+{% block extra_css %}
+<style>
+    .reports-container {
+        padding: 2rem 0;
+    }
+
+    .reports-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .reports-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        background: var(--gradient-neon);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 0.5rem;
+    }
+
+    .reports-subtitle {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+
+    .reports-card {
+        background: var(--bg-glass);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--border-glass);
+        border-radius: 20px;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        overflow: hidden;
+    }
+
+    .table-responsive {
+        margin: 0;
+    }
+
+    .table {
+        margin: 0;
+        background: transparent;
+    }
+
+    .table thead th {
+        background: rgba(6, 182, 212, 0.1);
+        border-bottom: 2px solid var(--accent-cyan);
+        color: var(--text-main);
+        font-weight: 600;
+        padding: 1.2rem;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+    }
+
+    .table tbody td {
+        padding: 1.2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: var(--text-main);
+        vertical-align: middle;
+    }
+
+    .table tbody tr:hover {
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    .student-info {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .student-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--gradient-neon);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    .student-details h6 {
+        margin: 0;
+        font-weight: 600;
+        color: var(--text-main);
+    }
+
+    .student-details small {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+    }
+
+    .subject-badge {
+        background: rgba(168, 85, 247, 0.1);
+        color: var(--accent-purple);
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        border: 1px solid rgba(168, 85, 247, 0.2);
+    }
+
+    .dates-list {
+        max-width: 200px;
+    }
+
+    .date-tag {
+        display: inline-block;
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--accent-amber);
+        padding: 0.2rem 0.6rem;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        margin: 0.1rem;
+        border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    .reason-text {
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .status-badge {
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .status-pending {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--accent-amber);
+        border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    .status-approved {
+        background: rgba(34, 197, 94, 0.1);
+        color: var(--accent-emerald);
+        border: 1px solid rgba(34, 197, 94, 0.2);
+    }
+
+    .status-rejected {
+        background: rgba(244, 63, 94, 0.1);
+        color: var(--accent-rose);
+        border: 1px solid rgba(244, 63, 94, 0.2);
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .btn-approve {
+        background: rgba(34, 197, 94, 0.1);
+        color: var(--accent-emerald);
+        border: 1px solid rgba(34, 197, 94, 0.2);
+        padding: 0.4rem 0.8rem;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-approve:hover {
+        background: var(--accent-emerald);
+        color: white;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+    }
+
+    .btn-reject {
+        background: rgba(244, 63, 94, 0.1);
+        color: var(--accent-rose);
+        border: 1px solid rgba(244, 63, 94, 0.2);
+        padding: 0.4rem 0.8rem;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-reject:hover {
+        background: var(--accent-rose);
+        color: white;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(244, 63, 94, 0.3);
+    }
+
+    .no-reports {
+        text-align: center;
+        padding: 3rem;
+        color: var(--text-muted);
+    }
+
+    .no-reports i {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+    }
+
+    .no-reports h4 {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+        .reports-title {
+            font-size: 2rem;
+        }
+
+        .table-responsive {
+            font-size: 0.9rem;
+        }
+
+        .student-info {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+        }
+
+        .btn-approve, .btn-reject {
+            text-align: center;
+        }
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .reports-card {
+        animation: fadeInUp 0.5s ease-out;
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Add confirmation for approve/reject actions
+    const actionButtons = document.querySelectorAll('.btn-approve, .btn-reject');
+    
+    actionButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            const action = this.classList.contains('btn-approve') ? 'approve' : 'reject';
+            const studentName = this.closest('tr').querySelector('.student-details h6').textContent;
+            
+            if (!confirm(`Are you sure you want to ${action} the holiday report from ${studentName}?`)) {
+                e.preventDefault();
+            } else {
+                // Show loading state
+                this.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Processing...';
+                this.style.pointerEvents = 'none';
+            }
+        });
+    });
+
+    // Add tooltip for truncated reason text
+    const reasonTexts = document.querySelectorAll('.reason-text');
+    reasonTexts.forEach(text => {
+        if (text.scrollWidth > text.clientWidth) {
+            text.title = text.textContent;
+        }
+    });
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="reports-container">
+    <div class="container">
+        <div class="reports-header">
+            <h1 class="reports-title">Extra Holiday Reports</h1>
+            <p class="reports-subtitle">Review and manage student reports for extra holidays</p>
+        </div>
+
+        <div class="reports-card">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Student</th>
+                            <th>Subject</th>
+                            <th>Dates</th>
+                            <th>Reason</th>
+                            <th>Status</th>
+                            <th>Submitted</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for report in reports %}
+                        <tr>
+                            <td>
+                                <div class="student-info">
+                                    <div class="student-avatar">
+                                        {{ report.student.first_name|first|upper }}{{ report.student.last_name|first|upper }}
+                                    </div>
+                                    <div class="student-details">
+                                        <h6>{{ report.student.get_full_name }}</h6>
+                                        <small>{{ report.student.username }}</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="subject-badge">
+                                    {{ report.subject.name }} ({{ report.subject.code }})
+                                </span>
+                            </td>
+                            <td class="dates-list">
+                                {% for date in report.dates %}
+                                <span class="date-tag">{{ date }}</span>
+                                {% endfor %}
+                            </td>
+                            <td>
+                                <span class="reason-text" title="{{ report.reason }}">
+                                    {{ report.reason|truncatechars:30 }}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="status-badge status-{{ report.status }}">
+                                    {{ report.get_status_display }}
+                                </span>
+                            </td>
+                            <td>
+                                <small class="text-muted">
+                                    {{ report.submitted_at|date:"M d, Y" }}<br>
+                                    {{ report.submitted_at|time:"H:i" }}
+                                </small>
+                            </td>
+                            <td>
+                                {% if report.status == 'pending' %}
+                                <div class="action-buttons">
+                                    <a href="{% url 'approve_extra_holiday_report' report.id %}" class="btn-approve">
+                                        <i class="fas fa-check me-1"></i>Approve
+                                    </a>
+                                    <a href="{% url 'reject_extra_holiday_report' report.id %}" class="btn-reject">
+                                        <i class="fas fa-times me-1"></i>Reject
+                                    </a>
+                                </div>
+                                {% else %}
+                                <span class="text-muted">
+                                    <i class="fas fa-check-circle me-1"></i>{{ report.get_status_display }}
+                                </span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="7">
+                                <div class="no-reports">
+                                    <i class="fas fa-calendar-times"></i>
+                                    <h4>No Reports Found</h4>
+                                    <p>Students haven't submitted any extra holiday reports yet.</p>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

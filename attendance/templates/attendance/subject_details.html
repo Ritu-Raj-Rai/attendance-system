@@ -1,0 +1,189 @@
+{% extends 'attendance/base.html' %}
+{% load static %}
+
+{% block title %}{{ subject.name }} - Attendance Details{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/subject_details.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4><i class="fas fa-book"></i> {{ subject.name }} ({{ subject.code }})</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 text-center">
+                            <div class="stat-card">
+                                <div class="percentage-circle attendance-{% if percentage >= 75 %}good{% else %}warning{% endif %}">
+                                    {{ percentage }}%
+                                </div>
+                                <p class="mt-2 mb-0">Attendance</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <div class="stat-card">
+                                <div class="stat-number">{{ total }}</div>
+                                <p class="mb-0 text-muted">Total Classes</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <div class="stat-card">
+                                <div class="stat-number text-success">{{ present }}</div>
+                                <p class="mb-0 text-muted">Present</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <div class="stat-card">
+                                <div class="stat-number text-danger">{{ absent }}</div>
+                                <p class="mb-0 text-muted">Absent</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-3">
+                        <div class="col-md-12 text-center">
+                            <div class="stat-card">
+                                <div class="stat-number text-info">{{ excused }}</div>
+                                <p class="mb-0 text-muted">Excused</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    
+                    {% if can_bunk > 0 %}
+                    <div class="success-box">
+                        <i class="fas fa-smile-wink"></i>
+                        <strong>Good News!</strong> 
+                        <p>You can bunk <strong>{{ can_bunk }}</strong> more classes in this subject and still maintain {{ subject.required_percentage }}% attendance!</p>
+                    </div>
+                    {% elif needed > 0 %}
+                    <div class="warning-box">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <strong>Warning!</strong> 
+                        <p>You need to attend <strong>{{ needed }}</strong> more classes to reach {{ subject.required_percentage }}% attendance!</p>
+                    </div>
+                    {% else %}
+                    <div class="success-box">
+                        <i class="fas fa-check-circle"></i>
+                        <strong>Perfect!</strong> 
+                        <p>You have excellent attendance in this subject! Keep it up!</p>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <small>Attendance Progress</small>
+                            <small>{{ percentage }}% / {{ subject.required_percentage }}% Required</small>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar attendance-progress" data-percentage="{{ percentage }}"></div>
+                        </div>
+                        {% if percentage < subject.required_percentage %}
+                        <div class="text-danger mt-2">
+                            <i class="fas fa-exclamation-circle"></i> Your attendance is below the required {{ subject.required_percentage }}%
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h5><i class="fas fa-chart-line"></i> Monthly Breakdown</h5>
+                </div>
+                <div class="card-body">
+                    {% for month, data in monthly_data.items %}
+                    <div class="mb-3">
+                        <strong>{{ month }}</strong>
+                        <div class="progress mt-1" style="height: 25px;">
+                            <div class="progress-bar bg-success" data-width="{{ data.present }}" data-total="{{ data.present|add:data.absent }}"></div>
+                        </div>
+                        <small class="text-muted">
+                            <span class="text-success">●</span> Present: {{ data.present }} | 
+                            <span class="text-danger">●</span> Absent: {{ data.absent }}
+                        </small>
+                    </div>
+                    {% empty %}
+                    <p class="text-muted text-center">No data available</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-secondary text-white">
+                    <h5><i class="fas fa-history"></i> Attendance History</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Remarks</th>
+                                    <th>Marked By</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for record in attendance_records %}
+                                <tr>
+                                    <td>{{ record.date|date:"l, F d, Y" }}</td>
+                                    <td>
+                                        <span class="badge bg-{% if record.status == 'present' %}success{% elif record.status == 'absent' %}danger{% else %}info{% endif %}">
+                                            {{ record.status|title }}
+                                        </span>
+                                    </td>
+                                    <td>{{ record.remarks|default:"-" }}</td>
+                                    <td>{{ record.marked_by.username|default:"Self" }}</td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="4" class="text-center">No attendance records found</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set progress bar widths
+        document.querySelectorAll('.attendance-progress').forEach(function(bar) {
+            var percentage = bar.getAttribute('data-percentage');
+            bar.style.width = percentage + '%';
+            if (percentage >= 75) {
+                bar.classList.add('bg-success');
+            } else {
+                bar.classList.add('bg-danger');
+            }
+        });
+        
+        // Set monthly progress bars
+        document.querySelectorAll('.progress-bar[data-width]').forEach(function(bar) {
+            var present = parseInt(bar.getAttribute('data-width'));
+            var total = parseInt(bar.getAttribute('data-total'));
+            if (total > 0) {
+                var width = (present / total) * 100;
+                bar.style.width = width + '%';
+            }
+        });
+    });
+</script>
+{% endblock %}

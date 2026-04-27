@@ -1,0 +1,238 @@
+{% extends 'attendance/base.html' %}
+
+{% block title %}Attendance History{% endblock %}
+
+{% block extra_css %}
+<style>
+    .page-header {
+        margin-bottom: 2.5rem;
+    }
+
+    .filter-toolbar {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .filter-form {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        align-items: flex-end;
+    }
+
+    .filter-group {
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .filter-group label {
+        font-weight: 700;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 0.6rem;
+        display: block;
+        letter-spacing: 1px;
+    }
+
+    .filter-control {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border-glass);
+        color: var(--text-main);
+        padding: 0.8rem 1rem;
+        border-radius: 12px;
+        width: 100%;
+        transition: all 0.3s;
+    }
+
+    .filter-control:focus {
+        outline: none;
+        border-color: var(--accent-cyan);
+        background: rgba(6, 182, 212, 0.1);
+    }
+
+    .history-card {
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .table {
+        margin-bottom: 0;
+        color: var(--text-main);
+    }
+
+    .table th {
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text-muted);
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        padding: 1.2rem 1.5rem;
+        border: none;
+    }
+
+    .table td {
+        padding: 1.2rem 1.5rem;
+        vertical-align: middle;
+        border-top: 1px solid var(--border-glass);
+    }
+
+    .status-badge {
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .status-present {
+        background: rgba(16, 185, 129, 0.1);
+        color: var(--accent-emerald);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .status-absent {
+        background: rgba(244, 63, 94, 0.1);
+        color: var(--accent-rose);
+        border: 1px solid rgba(244, 63, 94, 0.2);
+    }
+
+    .pagination-container {
+        padding: 2rem;
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .page-link-custom {
+        padding: 0.6rem 1.2rem;
+        background: var(--bg-glass);
+        border: 1px solid var(--border-glass);
+        color: var(--text-main);
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+
+    .page-link-custom:hover {
+        background: var(--bg-glass-hover);
+        border-color: var(--accent-cyan);
+        color: var(--accent-cyan);
+    }
+
+    .page-link-custom.active {
+        background: var(--gradient-neon);
+        color: white;
+        border: none;
+    }
+
+    @media (max-width: 768px) {
+        .filter-group {
+            min-width: 100%;
+        }
+        .table th:nth-child(4), .table td:nth-child(4),
+        .table th:nth-child(5), .table td:nth-child(5) {
+            display: none;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 style="font-weight: 800; letter-spacing: -1px;">Activity Log</h1>
+    <p class="text-muted">Detailed history of your attendance records</p>
+</div>
+
+<!-- Filters -->
+<div class="glass-card filter-toolbar">
+    <form method="GET" class="filter-form">
+        <div class="filter-group">
+            <label>Subject</label>
+            <select name="subject" class="filter-control" style="background-color: #1a1a1a; color: white;">
+                <option value="" style="background-color: #1a1a1a; color: white;">All Subjects</option>
+                {% for subject in subjects %}
+                <option value="{{ subject.id }}" style="background-color: #1a1a1a; color: white;" {% if current_subject == subject.id|stringformat:"s" %}selected{% endif %}>{{ subject.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>Attendance Status</label>
+            <select name="status" class="filter-control" style="background-color: #1a1a1a; color: white;">
+                <option value="" style="background-color: #1a1a1a; color: white;">All Records</option>
+                <option value="present" style="background-color: #1a1a1a; color: white;" {% if current_status == 'present' %}selected{% endif %}>Present</option>
+                <option value="absent" style="background-color: #1a1a1a; color: white;" {% if current_status == 'absent' %}selected{% endif %}>Absent</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>Specific Date</label>
+            <input type="date" name="date" class="filter-control" style="background-color: #1a1a1a; color: white; color-scheme: dark;" value="{{ current_date|default_if_none:'' }}">
+        </div>
+        <div style="min-width: 150px;">
+            <button type="submit" class="btn-premium w-100" style="padding: 0.8rem;">
+                <i class="fas fa-filter me-2"></i>Apply
+            </button>
+        </div>
+    </form>
+</div>
+
+<!-- Records Table -->
+<div class="glass-card history-card">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Subject</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Check-in</th>
+                    <th>Remarks</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in page_obj %}
+                <tr>
+                    <td class="fw-bold">{{ record.date|date:"M d, Y" }}</td>
+                    <td class="text-cyan fw-bold">{{ record.subject.name }}</td>
+                    <td class="text-center">
+                        <span class="status-badge {% if record.status == 'present' %}status-present{% else %}status-absent{% endif %}">
+                            {{ record.status }}
+                        </span>
+                    </td>
+                    <td class="text-center text-muted small">{{ record.check_in_time|time:"g:i A"|default:"--" }}</td>
+                    <td class="text-muted small">{{ record.remarks|default:"--" }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center py-5">
+                        <div class="opacity-25 mb-3"><i class="fas fa-history fa-3x"></i></div>
+                        <p class="text-muted mb-0">No records found matching your filters.</p>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination -->
+    {% if page_obj.has_other_pages %}
+    <div class="pagination-container border-top border-light border-opacity-10">
+        {% if page_obj.has_previous %}
+            <a href="?page=1&subject={{ current_subject }}&status={{ current_status }}" class="page-link-custom">« First</a>
+            <a href="?page={{ page_obj.previous_page_number }}&subject={{ current_subject }}&status={{ current_status }}" class="page-link-custom">Prev</a>
+        {% endif %}
+        
+        <span class="page-link-custom active">
+            {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
+        </span>
+        
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}&subject={{ current_subject }}&status={{ current_status }}" class="page-link-custom">Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}&subject={{ current_subject }}&status={{ current_status }}" class="page-link-custom">Last »</a>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

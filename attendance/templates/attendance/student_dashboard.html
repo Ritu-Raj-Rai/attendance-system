@@ -1,0 +1,380 @@
+{% extends 'attendance/base.html' %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Dashboard Specific Styles */
+    .welcome-section {
+        padding: 3rem 0;
+        margin-bottom: 2rem;
+        position: relative;
+    }
+
+    .welcome-text h1 {
+        font-size: 2.8rem;
+        font-weight: 800;
+        letter-spacing: -1px;
+        margin-bottom: 0.5rem;
+    }
+
+    .welcome-text .user-name {
+        background: var(--gradient-neon);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .stat-card {
+        padding: 2rem;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-10px);
+        background: var(--bg-glass-hover);
+        border-color: var(--accent-cyan);
+    }
+
+    .stat-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100px;
+        height: 100px;
+        background: var(--accent-cyan);
+        filter: blur(80px);
+        opacity: 0.1;
+        pointer-events: none;
+    }
+
+    .stat-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        background: var(--gradient-neon);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .stat-label {
+        color: var(--text-muted);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.8rem;
+    }
+
+    .stat-value {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-top: 0.5rem;
+    }
+
+    /* Subject Circular Attendance */
+    .subject-section {
+        margin-top: 3rem;
+    }
+
+    .subject-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .subject-card {
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .subject-card:hover {
+        border-color: var(--accent-cyan);
+        background: rgba(6, 182, 212, 0.05);
+    }
+
+    .subject-info h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 0.3rem;
+    }
+
+    .subject-meta {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+    }
+
+    .circular-progress {
+        position: relative;
+        width: 85px;
+        height: 85px;
+    }
+
+    .circular-progress svg {
+        width: 100%;
+        height: 100%;
+        transform: rotate(-90deg);
+    }
+
+    .circular-progress circle {
+        fill: none;
+        stroke-width: 8;
+        stroke-linecap: round;
+    }
+
+    .circular-progress circle.bg {
+        stroke: rgba(255, 255, 255, 0.05);
+    }
+
+    .circular-progress circle.progress {
+        stroke: var(--accent-cyan);
+        stroke-dasharray: 283;
+        stroke-dashoffset: 283;
+        transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .circular-progress circle.progress.low {
+        stroke: var(--accent-rose);
+    }
+
+    .circular-progress .value {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1rem;
+        font-weight: 800;
+    }
+
+    /* AI Sync Section */
+    .ai-sync-card {
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(0, 0, 0, 0));
+        border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    .ai-sync-card:hover {
+        border-color: var(--accent-amber);
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(0, 0, 0, 0));
+    }
+
+    @media (max-width: 768px) {
+        .welcome-text h1 {
+            font-size: 2rem;
+        }
+        .subject-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Schedule Styles */
+    .schedule-item {
+        background: rgba(255, 255, 255, 0.03);
+        border-left: 3px solid #06b6d4;
+    }
+    .schedule-item.is-lab {
+        border-left-color: #a855f7;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="welcome-section">
+    <div class="welcome-text">
+        <h1>Hello, <span class="user-name">{{ user.first_name|default:user.username }}</span>! <i class="fas fa-wave-square ms-2 fs-3 text-warning"></i></h1>
+        <p class="text-muted d-flex align-items-center flex-wrap gap-3">
+            <span><i class="far fa-calendar-alt me-2 text-cyan"></i> {{ now|date:"l, F j" }}</span>
+            <span class="opacity-25">|</span>
+            <span><i class="far fa-clock me-2 text-purple"></i> {{ now|time:"g:i A" }}</span>
+            {% if profile.current_semester %}
+            <span class="opacity-25">|</span>
+            <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-2 rounded-pill" style="font-weight: 700; font-size: 0.8rem;">
+                <i class="fas fa-graduation-cap me-2"></i> Semester {{ profile.current_semester }}
+            </span>
+            {% endif %}
+        </p>
+    </div>
+</section>
+
+<div class="stats-grid">
+    <div class="stat-card glass-card">
+        <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+        <div class="stat-label">Overall Attendance</div>
+        <div class="stat-value">{{ attendance_percentage }}%</div>
+    </div>
+
+    <div class="stat-card glass-card">
+        <div class="stat-icon text-emerald"><i class="fas fa-check-double"></i></div>
+        <div class="stat-label">Total Classes Attended</div>
+        <div class="stat-value">{{ present_count }}</div>
+    </div>
+
+    <div class="stat-card glass-card ai-sync-card">
+        <div class="d-flex justify-content-between align-items-start">
+            <div>
+                <div class="stat-label">Timetable Sync</div>
+                <div class="stat-value" style="font-size: 1.8rem;">
+                    {% if student_timetable and student_timetable.is_processed %}
+                    Active <i class="fas fa-check-circle text-success fs-5"></i>
+                    {% else %}
+                    Pending <i class="fas fa-clock text-amber fs-5"></i>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="stat-icon text-amber" style="background: rgba(245, 158, 11, 0.1); padding: 1rem; border-radius: 15px;">
+                <i class="fas fa-robot"></i>
+            </div>
+        </div>
+        <a href="#timetable-section" class="btn btn-sm w-100 mt-3" style="background: var(--accent-amber); color: #000; font-weight: 700; border-radius: 8px;">
+            <i class="fas fa-sync-alt me-1"></i> Sync Now
+        </a>
+    </div>
+</div>
+
+{% load attendance_tags %}
+
+{% if day_schedule %}
+<div class="glass-card p-4 mb-5" style="border-radius: 20px;">
+    <h4 style="font-weight: 800; letter-spacing: -0.5px;" class="mb-4"><i class="far fa-calendar-check text-cyan me-2"></i>Weekly Class Schedule</h4>
+    <div class="row g-4 overflow-auto flex-nowrap flex-md-wrap pb-3 pb-md-0">
+        {% for day in "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday"|split:"," %}
+        <div class="col-10 col-md-4 col-lg-2">
+            <div class="h-100 p-3" style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-glass); border-radius: 16px;">
+                <div class="text-cyan small fw-bold text-uppercase mb-3 pb-2 border-bottom border-secondary border-opacity-25" style="letter-spacing: 1px;">{{ day|slice:":3" }}</div>
+                {% with day_entries=day_schedule|get_item:day %}
+                    {% if day_entries %}
+                        {% for entry in day_entries %}
+                        <div class="mb-2 p-2 rounded-3 schedule-item {% if entry.is_lab %}is-lab{% endif %}">
+                            <div class="fw-bold text-truncate" style="font-size: 0.8rem; line-height: 1.2;" title="{{ entry.subject }}">{{ entry.subject }}</div>
+                            <div class="text-muted" style="font-size: 0.65rem; margin-top: 2px;">
+                                {{ entry.units }} unit{% if entry.units > 1 %}s{% endif %}
+                                {% if entry.is_lab %}<span class="badge bg-purple-subtle text-purple ms-1" style="font-size: 0.55rem; padding: 2px 4px;">LAB</span>{% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="text-muted" style="font-size: 0.75rem; font-style: italic; opacity: 0.5;">No classes</div>
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<div class="subject-section">
+    <div class="d-flex justify-content-between align-items-end mb-4">
+        <div>
+            <h2 style="font-weight: 800; letter-spacing: -0.5px;">Subject Insights</h2>
+            <p class="text-muted mb-0">Real-time attendance tracking per subject</p>
+        </div>
+    </div>
+
+    <div class="subject-grid">
+        {% for subject in subject_attendance %}
+        <div class="subject-card glass-card" data-url="{% url 'subject_calendar' subject.subject.id %}" onclick="window.location.href=this.dataset.url">
+            <div class="subject-info">
+                <h3 class="text-cyan">{{ subject.subject.name }}</h3>
+                <div class="subject-meta mb-2">
+                    <i class="fas fa-bullseye me-1"></i> Goal: {{ subject.target_percentage }}%
+                </div>
+                <div class="d-flex gap-2">
+                    <span class="badge badge-custom {% if subject.bunkable > 5 %}bg-success-subtle text-success{% elif subject.bunkable > 0 %}bg-warning-subtle text-warning{% else %}bg-danger-subtle text-danger{% endif %}" style="font-size: 0.7rem;">
+                        Bunk: {{ subject.bunkable }}
+                    </span>
+                    {% if subject.needs_to_attend > 0 %}
+                    <span class="badge badge-custom bg-danger-subtle text-danger" style="font-size: 0.7rem;">
+                        Need: {{ subject.needs_to_attend }}
+                    </span>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="circular-progress" data-percent="{{ subject.percentage }}">
+                <svg viewBox="0 0 100 100">
+                    <circle class="bg" cx="50" cy="50" r="45"></circle>
+                    <circle class="progress {% if subject.percentage < subject.target_percentage %}low{% endif %}" cx="50" cy="50" r="45"></circle>
+                </svg>
+                <div class="value">{{ subject.percentage }}%</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div id="timetable-section" class="glass-card mt-5 p-4 p-md-5 ai-sync-card">
+    <div class="row align-items-center">
+        <div class="col-lg-7 mb-4 mb-lg-0">
+            <h2 style="font-weight: 800;"><i class="fas fa-magic text-amber me-2"></i>AI Timetable Sync</h2>
+            <p class="text-muted fs-5 mt-3">Upload your timetable image or <b>paste a public file link</b> and let our AI handle the rest. We'll automatically identify your subjects and set up your attendance goals.</p>
+            <div class="d-flex flex-wrap gap-4 mt-4">
+                <div class="d-flex align-items-center gap-2">
+                    <i class="fas fa-check-circle text-success"></i>
+                    <span>Auto Subject Mapping</span>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <i class="fas fa-check-circle text-success"></i>
+                    <span>Smart Bunk Calculations</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <form method="POST" action="{% url 'upload_timetable' %}" class="p-4 glass-card" style="background: rgba(255,255,255,0.03);">
+                {% csrf_token %}
+                <div class="text-center mb-4">
+                    <i class="fas fa-link fa-3x text-amber opacity-50 mb-3"></i>
+                    <p class="text-muted small">Paste the timetable link provided by your college through email so that AI can read your timetable correctly.</p>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label text-muted small fw-bold">TIMETABLE LINK</label>
+                    <input type="url" name="timetable_link" placeholder="https://..." required class="form-control bg-dark border-secondary text-white p-3" style="border-radius: 12px;">
+                </div>
+
+                <button type="submit" class="btn btn-premium w-100" style="background: var(--accent-amber); box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);">
+                    Process with AI
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const circles = document.querySelectorAll('.circular-progress');
+        circles.forEach(container => {
+            const percent = container.getAttribute('data-percent');
+            const circle = container.querySelector('.progress');
+            const radius = circle.r.baseVal.value;
+            const circumference = 2 * Math.PI * radius;
+            
+            circle.style.strokeDasharray = `${circumference} ${circumference}`;
+            circle.style.strokeDashoffset = circumference;
+            
+            const offset = circumference - (percent / 100) * circumference;
+            
+            // Trigger animation after a slight delay
+            setTimeout(() => {
+                circle.style.strokeDashoffset = offset;
+            }, 100);
+        });
+    });
+</script>
+{% endblock %}

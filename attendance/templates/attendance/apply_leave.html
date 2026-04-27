@@ -1,0 +1,65 @@
+{% extends 'attendance/base.html' %}
+
+{% block title %}Apply for Leave{% endblock %}
+
+{% block extra_css %}
+<style>
+    .leave-card {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        max-width: 500px;
+        margin: 40px auto;
+    }
+
+    .leave-card h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .leave-card input,
+    .leave-card textarea,
+    .leave-card select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+
+    .leave-card button {
+        width: 100%;
+        padding: 10px;
+        background: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .leave-card button:hover {
+        background: #45a049;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="leave-card">
+    <h2>Apply for Leave</h2>
+    <form method="POST">
+        {% csrf_token %}
+        
+        <label>From Date:</label>
+        <input type="date" name="from_date" required>
+
+        <label>To Date:</label>
+        <input type="date" name="to_date" required>
+
+        <label>Reason:</label>
+        <textarea name="reason" rows="4" required></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}

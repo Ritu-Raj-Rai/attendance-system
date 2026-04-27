@@ -1,0 +1,338 @@
+{% extends 'attendance/base.html' %}
+{% load attendance_tags %}
+
+{% block title %}Attendance Calendar{% endblock %}
+
+{% block extra_css %}
+<style>
+    .calendar-card {
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .calendar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2.5rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .month-title {
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: -1px;
+        background: var(--gradient-neon);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .calendar-nav-btn {
+        background: var(--bg-glass);
+        border: 1px solid var(--border-glass);
+        color: var(--text-main);
+        padding: 0.6rem 1.2rem;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .calendar-nav-btn:hover {
+        background: var(--bg-glass-hover);
+        border-color: var(--accent-cyan);
+        color: var(--accent-cyan);
+    }
+
+    .calendar-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 10px;
+        table-layout: fixed;
+    }
+
+    .calendar-table th {
+        text-align: center;
+        padding: 1rem;
+        color: var(--text-muted);
+        font-weight: 800;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 1.5px;
+    }
+
+    .day-cell {
+        height: 100px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border-glass);
+        border-radius: 16px;
+        padding: 0.8rem;
+        position: relative;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        cursor: pointer;
+    }
+
+    .day-cell:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: scale(1.05);
+        border-color: var(--accent-cyan);
+        z-index: 10;
+    }
+
+    .day-number {
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: var(--text-main);
+        opacity: 0.9;
+    }
+
+    .day-cell.today {
+        border: 2px solid var(--accent-purple);
+        box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+    }
+
+    .day-cell.today .day-number {
+        color: var(--accent-purple);
+    }
+
+    .status-indicator {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: 1.4rem;
+    }
+
+    .cell-present {
+        background: rgba(16, 185, 129, 0.1) !important;
+        border-color: rgba(16, 185, 129, 0.3);
+    }
+    .cell-absent {
+        background: rgba(244, 63, 94, 0.1) !important;
+        border-color: rgba(244, 63, 94, 0.3);
+    }
+    .cell-excused {
+        background: rgba(245, 158, 11, 0.1) !important;
+        border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    .legend-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-glass);
+    }
+
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        font-weight: 600;
+    }
+
+    .legend-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+    }
+
+    /* Modal Styling */
+    .modal-content-glass {
+        background: var(--bg-glass);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        border-radius: 24px;
+        border: 1px solid var(--border-glass);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-status-option {
+        padding: 1rem;
+        border-radius: 15px;
+        border: 1px solid var(--border-glass);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text-main);
+        font-weight: 700;
+        transition: all 0.3s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .btn-status-option:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-3px);
+    }
+
+    .btn-status-option.active-present:hover { border-color: var(--accent-emerald); color: var(--accent-emerald); }
+    .btn-status-option.active-absent:hover { border-color: var(--accent-rose); color: var(--accent-rose); }
+    .btn-status-option.active-excused:hover { border-color: var(--accent-amber); color: var(--accent-amber); }
+
+    @media (max-width: 768px) {
+        .calendar-table {
+            border-spacing: 5px;
+        }
+        .day-cell {
+            height: 70px;
+            padding: 0.5rem;
+        }
+        .day-number {
+            font-size: 1rem;
+        }
+        .status-indicator {
+            font-size: 1.1rem;
+            bottom: 5px;
+            right: 5px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="glass-card calendar-card">
+    <div class="calendar-header">
+        <h2 class="month-title"><i class="fas fa-calendar-day me-2"></i>{{ month_name }} {{ year }}</h2>
+        <div class="d-flex gap-2">
+            <a href="{{ previous_month_url }}" class="calendar-nav-btn">
+                <i class="fas fa-arrow-left"></i> Previous
+            </a>
+            <a href="{{ next_month_url }}" class="calendar-nav-btn">
+                Next <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="calendar-table">
+            <thead>
+                <tr>
+                    <th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th class="text-rose">Sat</th><th class="text-rose">Sun</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for week in calendar %}
+                <tr>
+                    {% for item in week %}
+                    <td style="padding: 0;">
+                        {% if item %}
+                            {% with day_status=attendance_map|get_item:item.day %}
+                               <div class="day-cell markable-day {% if item.date == today %}today{% endif %} {% if day_status == 'present' %}cell-present{% elif day_status == 'absent' %}cell-absent{% elif day_status == 'excused' %}cell-excused{% endif %}"
+                                   data-date="{{ item.date|date:'Y-m-d' }}"
+                                   data-day="{{ item.day }}"
+                                   data-status="{{ day_status|default:'' }}">
+                                <span class="day-number">{{ item.day }}</span>
+                                
+                                <div class="status-indicator">
+                                    {% if day_status == 'present' %}
+                                        <i class="fas fa-check-circle text-emerald"></i>
+                                    {% elif day_status == 'absent' %}
+                                        <i class="fas fa-times-circle text-rose"></i>
+                                    {% elif day_status == 'excused' %}
+                                        <i class="fas fa-info-circle text-amber"></i>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% endwith %}
+                        {% else %}
+                            <div class="day-cell" style="opacity: 0; pointer-events: none;"></div>
+                        {% endif %}
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="legend-container">
+        <div class="legend-item"><div class="legend-dot bg-emerald"></div> Present</div>
+        <div class="legend-item"><div class="legend-dot bg-rose"></div> Absent</div>
+        <div class="legend-item"><div class="legend-dot bg-amber"></div> Excused</div>
+        <div class="legend-item"><div class="legend-dot border border-light opacity-50"></div> No Record</div>
+        <div class="legend-item"><div class="legend-dot" style="border: 2px solid var(--accent-purple);"></div> Today</div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="markModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-content-glass">
+            <div class="modal-header border-0 p-4">
+                <h5 class="modal-title fw-800"><i class="fas fa-pen-nib text-cyan me-2"></i>Update Attendance</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-4 pt-0">
+                <p class="text-muted mb-4">Marking status for <strong id="modalDateDisplay" class="text-main"></strong></p>
+                
+                <form id="attendanceForm" method="POST" action="{% url 'mark_attendance_json' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="date" id="input_date">
+                    <input type="hidden" name="subject_id" value="{{ subject.id }}">
+                    <input type="hidden" name="status" id="input_status">
+                    
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <button type="button" onclick="submitStatus('present')" class="btn-status-option active-present">
+                                <i class="fas fa-check-circle fs-3 text-emerald"></i>
+                                Present
+                            </button>
+                        </div>
+                        <div class="col-6">
+                            <button type="button" onclick="submitStatus('absent')" class="btn-status-option active-absent">
+                                <i class="fas fa-times-circle fs-3 text-rose"></i>
+                                Absent
+                            </button>
+                        </div>
+                        <div class="col-6">
+                            <button type="button" onclick="submitStatus('excused')" class="btn-status-option active-excused">
+                                <i class="fas fa-info-circle fs-3 text-amber"></i>
+                                Excused
+                            </button>
+                        </div>
+                        <div class="col-6">
+                            <button type="button" onclick="submitStatus('clear')" class="btn-status-option">
+                                <i class="fas fa-eraser fs-3 opacity-50"></i>
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const modal = new bootstrap.Modal(document.getElementById('markModal'));
+
+    document.querySelectorAll('.markable-day').forEach((cell) => {
+        cell.addEventListener('click', () => {
+            openMarkModal(cell.dataset.date, cell.dataset.day, cell.dataset.status);
+        });
+    });
+    
+    function openMarkModal(date, day, currentStatus) {
+        document.getElementById('input_date').value = date;
+        document.getElementById('modalDateDisplay').innerText = date;
+        modal.show();
+    }
+
+    function submitStatus(status) {
+        document.getElementById('input_status').value = status;
+        document.getElementById('attendanceForm').submit();
+    }
+</script>
+{% endblock %}

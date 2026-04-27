@@ -1,0 +1,320 @@
+{% extends 'attendance/base.html' %}
+{% load attendance_tags %}
+
+{% block title %}Manage Semester {{ semester }} - AttendITER{% endblock %}
+
+{% block content %}
+<style>
+    .subject-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1.5rem;
+        padding: 1rem 0;
+    }
+    .subject-card {
+        background: var(--bg-glass);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--border-glass);
+        border-radius: 20px;
+        padding: 1.8rem;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+        overflow: hidden;
+    }
+    .subject-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        border-color: var(--accent-cyan);
+    }
+    .subject-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: var(--gradient-neon);
+        opacity: 0.8;
+    }
+    .card-actions {
+        display: flex;
+        gap: 0.8rem;
+        margin-top: 1.5rem;
+        padding-top: 1.2rem;
+        border-top: 1px solid var(--border-glass);
+    }
+    .btn-action-round {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        border: none;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-main);
+    }
+    .btn-action-round:hover {
+        transform: scale(1.1);
+        background: var(--gradient-neon);
+        color: white;
+        box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+    }
+    .btn-delete:hover {
+        background: var(--accent-rose);
+        box-shadow: 0 0 15px rgba(244, 63, 94, 0.4);
+    }
+    .quick-update-input {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border-glass);
+        border-radius: 10px;
+        padding: 0.5rem;
+        color: var(--text-main);
+        width: 80px;
+        text-align: center;
+        font-weight: 700;
+        outline: none;
+        transition: all 0.3s;
+    }
+    .quick-update-input:focus {
+        border-color: var(--accent-cyan);
+        box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
+    }
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-muted);
+        text-decoration: none;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s;
+    }
+    .back-link:hover {
+        color: var(--accent-cyan);
+        transform: translateX(-5px);
+    }
+    .modal-glass {
+        background: var(--bg-glass);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        border-radius: 24px;
+        border: 1px solid var(--border-glass);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .btn-neon {
+        border-radius: 12px;
+        font-weight: 700;
+        box-shadow: var(--shadow-neon);
+    }
+    .upload-zone {
+        border: 2px dashed var(--border-glass);
+        border-radius: 20px;
+        padding: 3rem;
+        text-align: center;
+        background: rgba(255,255,255,0.03);
+        transition: all 0.3s;
+    }
+    .upload-zone:hover {
+        border-color: var(--accent-cyan);
+    }
+</style>
+
+<div class="fade-in">
+    <a href="{% url 'admin_dashboard' %}" class="back-link">
+        <i class="fas fa-arrow-left"></i> Back to Semester Selection
+    </a>
+
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <div>
+            <h1 style="font-weight: 800; color: var(--text-main); letter-spacing: -1.5px; margin-bottom: 0.5rem;">
+                Semester {{ semester }} <span style="color: var(--text-muted); font-weight: 400;">Management</span>
+            </h1>
+            <p style="color: var(--text-muted); font-weight: 500;"><i class="fas fa-info-circle me-1"></i> Manage subjects specifically for the current semester.</p>
+        </div>
+        <div class="d-flex gap-3">
+            <button class="btn" style="background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 2px solid rgba(239, 68, 68, 0.2); padding: 0.8rem 1.8rem; border-radius: 14px; font-weight: 700; transition: all 0.3s;" data-bs-toggle="modal" data-bs-target="#holidayModal">
+                <i class="fas fa-umbrella-beach me-2"></i> Holiday List
+            </button>
+            <button class="btn" style="background: rgba(168, 85, 247, 0.1); color: var(--accent-purple); border: 2px solid rgba(168, 85, 247, 0.2); padding: 0.8rem 1.8rem; border-radius: 14px; font-weight: 700; transition: all 0.3s;" data-bs-toggle="modal" data-bs-target="#calendarModal">
+                <i class="fas fa-calendar-alt me-2"></i> Academic Calendar
+            </button>
+            <button class="btn" style="background: var(--gradient-neon); color: white; border: none; padding: 0.8rem 1.8rem; border-radius: 14px; font-weight: 700; box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3); transition: all 0.3s;" data-bs-toggle="modal" data-bs-target="#addSubjectModal">
+                <i class="fas fa-plus-circle me-2"></i> Add Subject
+            </button>
+        </div>
+    </div>
+
+    <div class="subject-grid">
+        {% for subject in subjects %}
+        <div class="subject-card">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+                <div>
+                    <h3 style="font-weight: 800; color: var(--text-main); margin-bottom: 0.2rem; font-size: 1.25rem;">{{ subject.name }}</h3>
+                    <div style="color: var(--text-muted); font-size: 0.85rem; font-weight: 600;">
+                        <i class="fas fa-chalkboard-user me-1 text-info"></i> {{ subject.teacher_name|default:"No Teacher Assigned" }}
+                    </div>
+                </div>
+                <span class="badge" style="background: rgba(6, 182, 212, 0.1); color: var(--accent-cyan); border: 1px solid rgba(6, 182, 212, 0.2); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; padding: 0.5rem 0.8rem; border-radius: 10px;">{{ subject.code }}</span>
+            </div>
+
+            <div style="margin-top: 1.5rem;">
+                <label style="display: block; color: var(--text-muted); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Total Classes</label>
+                <div style="display: flex; align-items: center; gap: 0.8rem;">
+                    <span style="color: var(--text-main); font-size: 1.5rem; font-weight: 800;">{{ subject.total_classes }}</span>
+                    <span class="badge" style="background: rgba(16, 185, 129, 0.1); color: var(--accent-emerald); border: 1px solid rgba(16, 185, 129, 0.2); font-size: 0.7rem; padding: 0.3rem 0.6rem; border-radius: 8px;">
+                        <i class="fas fa-robot me-1"></i> AI Calculated
+                    </span>
+                </div>
+            </div>
+
+            <div class="card-actions">
+                <button class="btn-action-round" onclick="editSubject('{{ subject.id }}', '{{ subject.name|escapejs }}', '{{ subject.code|escapejs }}')" title="Edit Subject Information">
+                    <i class="fas fa-pen-nib"></i>
+                </button>
+                <a href="{% url 'delete_subject' subject.id %}" class="btn-action-round btn-delete" onclick="return confirm('Permanently delete {{ subject.name|escapejs }}? This action cannot be undone.')" title="Delete Subject">
+                    <i class="fas fa-trash-can"></i>
+                </a>
+            </div>
+        </div>
+        {% empty %}
+        <div class="text-center py-5 mt-4" style="grid-column: 1 / -1; background: var(--bg-glass); border: 2px dashed var(--border-glass); border-radius: 24px;">
+            <div style="font-size: 4rem; margin-bottom: 1.5rem; opacity: 0.3;">
+                <i class="fas fa-layer-group"></i>
+            </div>
+            <h4 style="color: var(--text-main); font-weight: 700;">No Subjects Yet</h4>
+            <p style="color: var(--text-muted); max-width: 400px; margin: 0 auto 2rem;">Semester {{ semester }} doesn't have any subjects assigned. Start by creating the first one.</p>
+            <button class="btn" style="background: var(--accent-cyan); color: white; border: none; padding: 0.8rem 2rem; border-radius: 12px; font-weight: 700;" data-bs-toggle="modal" data-bs-target="#addSubjectModal">
+                <i class="fas fa-plus me-2"></i> Add First Subject
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Add/Edit Subject Modal -->
+<div class="modal fade" id="addSubjectModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content modal-glass">
+            <form id="subjectForm" method="POST" action="{% url 'add_subject_admin' %}">
+                {% csrf_token %}
+                <div class="modal-header border-0 p-4 pb-0">
+                    <h5 class="modal-title" id="modalTitle" style="font-weight: 800; color: var(--text-main); font-size: 1.5rem;">Create New Subject</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" style="filter: invert(1);"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <input type="hidden" name="subject_id" id="edit_subject_id">
+                    <input type="hidden" name="semester" value="{{ semester }}">
+                    <div class="mb-4">
+                        <label class="form-label text-muted small fw-bold mb-2">SUBJECT NAME</label>
+                        <input type="text" name="name" id="modal_name" class="form-control" required placeholder="e.g. Machine Learning" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); border-radius: 12px; padding: 0.8rem; color: var(--text-main);">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-4">
+                            <label class="form-label text-muted small fw-bold mb-2">SUBJECT CODE (Optional)</label>
+                            <input type="text" name="code" id="modal_code" class="form-control" placeholder="Auto-generated if empty" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); border-radius: 12px; padding: 0.8rem; color: var(--text-main);">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 p-4 pt-0">
+                    <button type="button" class="btn btn-link text-muted text-decoration-none fw-600" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" id="submitBtn" class="btn btn-primary btn-neon px-5 py-2">Create Subject</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function editSubject(id, name, code) {
+        document.getElementById('modalTitle').innerText = 'Edit Subject';
+        document.getElementById('submitBtn').innerText = 'Save Changes';
+        document.getElementById('edit_subject_id').value = id;
+        document.getElementById('modal_name').value = name;
+        document.getElementById('modal_code').value = code;
+        
+        var modal = new bootstrap.Modal(document.getElementById('addSubjectModal'));
+        modal.show();
+    }
+    
+    document.getElementById('addSubjectModal').addEventListener('hidden.bs.modal', function () {
+        document.getElementById('modalTitle').innerText = 'Create New Subject';
+        document.getElementById('submitBtn').innerText = 'Create Subject';
+        document.getElementById('edit_subject_id').value = '';
+        document.getElementById('subjectForm').reset();
+    });
+</script>
+
+<!-- Academic Calendar Modal -->
+<div class="modal fade" id="calendarModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content modal-glass">
+            <form method="POST" action="{% url 'upload_calendar' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row px-4 mb-3 mt-3">
+                    <div class="col-12">
+                        <label class="form-label text-muted small fw-bold mb-2">ACADEMIC YEAR</label>
+                        <input type="number" name="year" value="2024" class="form-control" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); border-radius: 12px; padding: 0.8rem; color: var(--text-main);">
+                    </div>
+                </div>
+                <div class="modal-header border-0 p-4 pb-0">
+                    <h5 class="modal-title" style="font-weight: 800; color: var(--text-main); font-size: 1.5rem;">Academic Calendar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" style="filter: invert(1);"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Upload the academic calendar image. Our AI will extract teaching days and holidays to calculate class totals.</p>
+                    
+                    <div class="upload-zone mb-3">
+                        <label>Academic Calendar Image</label>
+                        <i class="fas fa-cloud-upload-alt fa-3x mb-3" style="color: var(--accent-cyan);"></i>
+                        <input type="file" name="calendar_image" required class="form-control" style="background: transparent; border: none; color: var(--text-main);">
+                        <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Supports JPG, PNG (Max 5MB)</div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 p-4 pt-0">
+                    <button type="button" class="btn btn-link text-muted text-decoration-none fw-600" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary btn-neon px-5 py-2">Upload & Process</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Holiday List Modal -->
+<div class="modal fade" id="holidayModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content modal-glass">
+            <form method="POST" action="{% url 'upload_holiday_list' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row px-4 mb-3 mt-3">
+                    <div class="col-12">
+                        <label class="form-label text-muted small fw-bold mb-2">ACADEMIC YEAR</label>
+                        <input type="number" name="year" value="2024" class="form-control" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); border-radius: 12px; padding: 0.8rem; color: var(--text-main);">
+                    </div>
+                </div>
+                <div class="modal-header border-0 p-4 pb-0">
+                    <h5 class="modal-title" style="font-weight: 800; color: var(--text-main); font-size: 1.5rem;">Global Holiday List</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" style="filter: invert(1);"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Upload the global holiday list image for the entire academic year. AI will combine this data with the academic calendar.</p>
+                    
+                    <div class="upload-zone">
+                        <label>Global Holiday List Image</label>
+                        <i class="fas fa-umbrella-beach fa-3x mb-3" style="color: #ef4444;"></i>
+                        <input type="file" name="holiday_list_image" required class="form-control" style="background: transparent; border: none; color: var(--text-main);">
+                        <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Supports JPG, PNG (Max 5MB)</div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 p-4 pt-0">
+                    <button type="button" class="btn btn-link text-muted text-decoration-none fw-600" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary btn-neon px-5 py-2">Upload & Process</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

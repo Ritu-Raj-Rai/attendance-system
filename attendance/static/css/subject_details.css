@@ -1,0 +1,130 @@
+.percentage-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.percentage-circle:hover {
+    transform: scale(1.05);
+}
+
+.stat-card {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 10px 0;
+    transition: all 0.3s ease;
+}
+
+.stat-number:hover {
+    transform: scale(1.1);
+}
+
+.progress {
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.warning-box {
+    border-left: 4px solid #f6c23e;
+    background: #fff3cd;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.success-box {
+    border-left: 4px solid #1cc88a;
+    background: #d4edda;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.danger-box {
+    border-left: 4px solid #e74a3b;
+    background: #f8d7da;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.table tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
+
+.badge {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 20px;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    border-bottom: none;
+    border-radius: 15px 15px 0 0 !important;
+}
+
+.btn-group {
+    display: flex;
+    gap: 10px;
+}
+
+@media (max-width: 768px) {
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .percentage-circle {
+        width: 80px;
+        height: 80px;
+        font-size: 1.4rem;
+    }
+    
+    .warning-box, .success-box, .danger-box {
+        padding: 10px;
+    }
+    
+    .warning-box i, .success-box i, .danger-box i {
+        font-size: 1.5rem !important;
+    }
+}

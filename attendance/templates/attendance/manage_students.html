@@ -1,0 +1,65 @@
+{% extends 'attendance/base.html' %}
+
+{% block title %}Manage Students - AttendITER{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 style="font-weight: 800; letter-spacing: -1px; margin-bottom: 0;">User Management</h2>
+            <p class="text-muted mb-0">Overview of all registered students</p>
+        </div>
+        <a href="{% url 'admin_dashboard' %}" class="btn btn-outline-secondary rounded-pill">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </a>
+    </div>
+
+    <div class="glass-card table-responsive p-0" style="border-radius: 20px; overflow: hidden;">
+        <table class="table table-hover mb-0" style="color: var(--text-main); margin-bottom: 0px;">
+            <thead>
+                <tr>
+                    <th style="border-bottom: 1px solid var(--border-glass); background: rgba(255,255,255,0.05); padding: 1.2rem;">Student ID</th>
+                    <th style="border-bottom: 1px solid var(--border-glass); background: rgba(255,255,255,0.05); padding: 1.2rem;">Username</th>
+                    <th style="border-bottom: 1px solid var(--border-glass); background: rgba(255,255,255,0.05); padding: 1.2rem;">Current Sem</th>
+                    <th style="border-bottom: 1px solid var(--border-glass); background: rgba(255,255,255,0.05); padding: 1.2rem;">Enrollment Year</th>
+                    <th style="border-bottom: 1px solid var(--border-glass); background: rgba(255,255,255,0.05); padding: 1.2rem; text-align: center;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td style="padding: 1.2rem; vertical-align: middle; border-top: 1px solid var(--border-glass);">
+                        <span class="badge bg-purple bg-opacity-10 text-purple">{{ student.studentprofile.student_id|default:"-" }}</span>
+                    </td>
+                    <td style="padding: 1.2rem; vertical-align: middle; border-top: 1px solid var(--border-glass);">
+                        <div class="fw-bold">{{ student.username }}</div>
+                    </td>
+                    <td style="padding: 1.2rem; vertical-align: middle; border-top: 1px solid var(--border-glass);">
+                        {% if student.studentprofile.current_semester %}
+                            Semester {{ student.studentprofile.current_semester }}
+                        {% else %}
+                            <span class="text-muted">Not Selected</span>
+                        {% endif %}
+                    </td>
+                    <td style="padding: 1.2rem; vertical-align: middle; border-top: 1px solid var(--border-glass);">
+                        {{ student.studentprofile.enrollment_year|default:"-" }}
+                    </td>
+                    <td style="padding: 1.2rem; vertical-align: middle; border-top: 1px solid var(--border-glass); text-align: center;">
+                        <a href="/admin/auth/user/{{ student.id }}/change/" class="btn btn-sm btn-outline-info rounded-pill px-3" target="_blank" title="Edit in Admin Panel">
+                            <i class="fas fa-edit"></i> Edit Records
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center py-5 text-muted">
+                        <i class="fas fa-users fa-3x mb-3 opacity-50"></i>
+                        <p>No students have registered yet.</p>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

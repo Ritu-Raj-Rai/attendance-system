@@ -1,0 +1,51 @@
+{% extends 'attendance/base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="row mb-4 align-items-center animate-fade-in" style="animation-delay: 0.1s;">
+    <div class="col">
+        <h2 class="text-white fw-bold mb-0">Admin Dashboard</h2>
+        <p class="text-white-50">Manage Semesters, Subjects, and Holidays</p>
+    </div>
+</div>
+
+<div class="row g-4 mb-5">
+    <div class="col-md-8">
+        <div class="card glass-card h-100 animate-slide-up" style="animation-delay: 0.2s;">
+            <div class="card-body p-4">
+                <h5 class="text-white mb-4">Manage Semesters</h5>
+                <div class="row g-3">
+                    {% for semester in semesters %}
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <a href="{% url 'manage_semester' semester %}" class="btn glass-btn w-100 text-white p-3 text-center d-block text-decoration-none">
+                            <i class="fas fa-layer-group d-block mb-2 fs-3 text-neon-blue"></i>
+                            Semester {{ semester }}
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card glass-card h-100 animate-slide-up" style="animation-delay: 0.3s;">
+            <div class="card-body p-4">
+                <h5 class="text-white mb-4">Quick Links</h5>
+                <div class="d-grid gap-3">
+                    <a href="{% url 'manage_students' %}" class="btn glass-btn text-start">
+                        <i class="fas fa-users me-2 text-neon-purple"></i> Manage Students
+                    </a>
+                    <a href="{% url 'manage_extra_holiday_reports' %}" class="btn glass-btn text-start">
+                        <i class="fas fa-calendar-check me-2 text-neon-pink"></i> Holiday Reports
+                    </a>
+                    <a href="/admin/" class="btn glass-btn text-start">
+                        <i class="fas fa-cog me-2 text-neon-blue"></i> Django Admin
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends 'attendance/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                <div class="card-header bg-gradient-primary text-white p-4">
+                    <h2 class="mb-0"><i class="fas fa-question-circle me-2"></i> Timetable Clarification</h2>
+                </div>
+                <div class="card-body p-4">
+                    <div class="alert alert-info border-0 shadow-sm rounded-3">
+                        <p class="mb-0"><i class="fas fa-info-circle me-2"></i> Our AI needs a bit of help to accurately count your attendance for certain subjects. Please clarify the details below.</p>
+                    </div>
+
+                    <form method="POST">
+                        {% csrf_token %}
+                        
+                        {% for item in clarifications %}
+                        <div class="subject-clarification-box mb-4 p-4 border rounded-4 bg-light">
+                            <h4 class="text-primary mb-3">{{ item.subject }}</h4>
+                            
+                            {% if item.is_width_clarification %}
+                            <p class="text-muted small mb-3">Our AI is unsure about the width of this block. <strong>{{ item.reason }}</strong></p>
+                            <div class="row g-3">
+                                <div class="col-md-6 col-12">
+                                    <input type="radio" class="btn-check" name="width_{{ item.subject }}_{{ item.day }}" id="width_{{ item.subject }}_{{ item.day }}_1" value="1" required>
+                                    <label class="btn btn-outline-primary w-100 rounded-3 py-3" for="width_{{ item.subject }}_{{ item.day }}_1">
+                                        1 Slot Wide
+                                    </label>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <input type="radio" class="btn-check" name="width_{{ item.subject }}_{{ item.day }}" id="width_{{ item.subject }}_{{ item.day }}_2" value="2" required>
+                                    <label class="btn btn-outline-primary w-100 rounded-3 py-3" for="width_{{ item.subject }}_{{ item.day }}_2">
+                                        2 Slots Wide
+                                    </label>
+                                </div>
+                            </div>
+                            {% elif item.is_per_day_slot_clarification %}
+                            <p class="text-muted small mb-3"><strong>{{ item.reason }}</strong></p>
+                            <div class="table-responsive">
+                                <table class="table table-borderless align-middle">
+                                    <thead>
+                                        <tr class="text-muted small">
+                                            <th style="width: 30%">Day</th>
+                                            <th>Attendance Slots (Units)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for day in item.days_occurring %}
+                                        <tr>
+                                            <td><strong>{{ day }}</strong></td>
+                                            <td>
+                                                <div class="d-flex gap-2">
+                                                    <input type="radio" class="btn-check" name="slots_{{ item.subject|slugify }}_{{ day }}" id="slots_{{ item.subject|slugify }}_{{ day }}_1" value="1" checked required>
+                                                    <label class="btn btn-outline-primary rounded-3 px-4" for="slots_{{ item.subject|slugify }}_{{ day }}_1">1</label>
+                                                    
+                                                    <input type="radio" class="btn-check" name="slots_{{ item.subject|slugify }}_{{ day }}" id="slots_{{ item.subject|slugify }}_{{ day }}_2" value="2" required>
+                                                    <label class="btn btn-outline-primary rounded-3 px-4" for="slots_{{ item.subject|slugify }}_{{ day }}_2">2</label>
+                                                    
+                                                    <input type="radio" class="btn-check" name="slots_{{ item.subject|slugify }}_{{ day }}" id="slots_{{ item.subject|slugify }}_{{ day }}_3" value="3" required>
+                                                    <label class="btn btn-outline-primary rounded-3 px-4" for="slots_{{ item.subject|slugify }}_{{ day }}_3">3</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            {% else %}
+                            <p class="text-muted small mb-3">Legend shows: <strong>{{ item.practicals_missing }} Practicals</strong>. We see this subject on multiple days, but which one is the actual Lab session?</p>
+                            
+                            <div class="row g-3">
+                                {% for day in days %}
+                                <div class="col-md-4 col-6">
+                                    <input type="radio" class="btn-check" name="day_{{ item.subject|slugify }}" id="day_{{ item.subject|slugify }}_{{ day }}" value="{{ day }}" required>
+                                    <label class="btn btn-outline-primary w-100 rounded-3 py-3" for="day_{{ item.subject|slugify }}_{{ day }}">
+                                        {{ day }}
+                                    </label>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+
+                        <div class="d-grid gap-2 mt-5">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-3 shadow-sm py-3">
+                                <i class="fas fa-check-circle me-2"></i> Finalize Timetable
+                            </button>
+                            <a href="{% url 'student_dashboard' %}" class="btn btn-link text-muted">Cancel and go back</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
+    }
+    .subject-clarification-box {
+        transition: all 0.3s ease;
+    }
+    .subject-clarification-box:hover {
+        border-color: #4e73df !important;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    .btn-check:checked + .btn-outline-primary {
+        background-color: #4e73df;
+        color: white;
+        border-color: #4e73df;
+        box-shadow: 0 4px 10px rgba(78, 115, 223, 0.3);
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'attendance/base.html' %}
+
+{% block title %}Select Semester{% endblock %}
+
+{% block content %}
+<div class="fade-in d-flex align-items-center justify-content-center" style="min-height: 70vh;">
+    <div class="card shadow-lg" style="max-width: 500px; width: 100%; background: var(--bg-glass); backdrop-filter: blur(20px); border: 1px solid var(--border-glass); border-radius: 24px; padding: 2.5rem; text-align: center;">
+        <div class="mb-4">
+            <div style="width: 80px; height: 80px; background: var(--gradient-neon); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: var(--shadow-neon);">
+                <i class="fas fa-graduation-cap fa-2x text-white"></i>
+            </div>
+            <h2 style="font-weight: 800; color: var(--text-main); letter-spacing: -0.5px;">Welcome, {{ user.username }}!</h2>
+            <p class="text-muted">Please select your current semester to continue to your dashboard.</p>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row g-3 mb-4">
+                {% for i in "12345678"|make_list %}
+                <div class="col-6">
+                    <input type="radio" class="btn-check" name="semester" id="sem{{ i }}" value="{{ i }}" required>
+                    <label class="btn btn-outline-primary w-100 py-3" for="sem{{ i }}" style="border-radius: 12px; font-weight: 700; transition: all 0.3s;">
+                        Semester {{ i }}
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <button type="submit" class="btn btn-primary w-100 py-3 mt-2" style="border-radius: 14px; font-weight: 800; font-size: 1.1rem; box-shadow: var(--shadow-neon);">
+                Confirm & Continue <i class="fas fa-arrow-right ms-2"></i>
+            </button>
+        </form>
+    </div>
+</div>
+
+<style>
+    .btn-check:checked + .btn-outline-primary {
+        background: var(--gradient-neon) !important;
+        border-color: transparent !important;
+        color: white !important;
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(6, 182, 212, 0.3);
+    }
+    .btn-outline-primary:hover {
+        transform: translateY(-2px);
+    }
+</style>
+{% endblock %}

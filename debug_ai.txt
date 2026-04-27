@@ -1,0 +1,3776 @@
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB", "COA LAB", "CSW2 LAB"],
+  "Friday": ["AD2 LAB", "CSW2 LAB"],
+  "Saturday": ["CSW2 LAB", "AD2 LAB"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 2, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "COA LAB", "units": 1, "is_lab": true},
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true}
+      ],
+      "Friday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true},
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true}
+      ]
+    },
+    "total_weekly_classes": 18
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+    "Monday": ["COA", "IDM", "IM", "ALA"],
+    "Tuesday": ["ALA", "ALA", "IM", "COA LAB"],
+    "Wednesday": ["IDM", "COA", "ALA", "IM"],
+    "Thursday": ["AD2 LAB", "COA", "CSW2"],
+    "Friday": ["AD2", "CSW2"],
+    "Saturday": ["CSW2", "AD2"],
+    "_analytics": {
+        "day_entries": {
+            "Monday": [
+                {"subject": "COA", "units": 1, "is_lab": false},
+                {"subject": "IDM", "units": 1, "is_lab": false},
+                {"subject": "IM", "units": 1, "is_lab": false},
+                {"subject": "ALA", "units": 1, "is_lab": false}
+            ],
+            "Tuesday": [
+                {"subject": "ALA", "units": 2, "is_lab": false},
+                {"subject": "IM", "units": 1, "is_lab": false},
+                {"subject": "COA LAB", "units": 1, "is_lab": true}
+            ],
+            "Wednesday": [
+                {"subject": "IDM", "units": 1, "is_lab": false},
+                {"subject": "COA", "units": 1, "is_lab": false},
+                {"subject": "ALA", "units": 1, "is_lab": false},
+                {"subject": "IM", "units": 1, "is_lab": false}
+            ],
+            "Thursday": [
+                {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+                {"subject": "COA", "units": 1, "is_lab": false},
+                {"subject": "CSW2", "units": 1, "is_lab": true}
+            ],
+            "Friday": [
+                {"subject": "AD2", "units": 1, "is_lab": true},
+                {"subject": "CSW2", "units": 1, "is_lab": true}
+            ],
+            "Saturday": [
+                {"subject": "CSW2", "units": 1, "is_lab": true},
+                {"subject": "AD2", "units": 1, "is_lab": true}
+            ]
+        },
+        "total_weekly_classes": 18
+    }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB", "COA", "CSW2"],
+  "Friday": ["AD2", "CSW2"],
+  "Saturday": ["CSW2", "AD2"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 2, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "CSW2", "units": 1, "is_lab": true}
+      ],
+      "Friday": [
+        {"subject": "AD2", "units": 1, "is_lab": true},
+        {"subject": "CSW2", "units": 1, "is_lab": true}
+      ],
+      "Saturday": [
+        {"subject": "CSW2", "units": 1, "is_lab": true},
+        {"subject": "AD2", "units": 1, "is_lab": true}
+      ]
+    },
+    "total_weekly_classes": 21
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+    "Monday": ["COA", "IDM", "IM", "ALA"],
+    "Tuesday": ["ALA", "ALA", "IM", "COA LAB"],
+    "Wednesday": ["IDM", "COA", "ALA", "IM"],
+    "Thursday": ["AD2 LAB", "COA", "CSW2"],
+    "Friday": ["AD2", "CSW2"],
+    "Saturday": ["CSW2", "AD2"],
+    "_analytics": {
+        "day_entries": {
+            "Monday": [
+                {"subject": "COA", "units": 1, "is_lab": false},
+                {"subject": "IDM", "units": 1, "is_lab": false},
+                {"subject": "IM", "units": 1, "is_lab": false},
+                {"subject": "ALA", "units": 1, "is_lab": false}
+            ],
+            "Tuesday": [
+                {"subject": "ALA", "units": 2, "is_lab": false},
+                {"subject": "IM", "units": 1, "is_lab": false},
+                {"subject": "COA LAB", "units": 1, "is_lab": true}
+            ],
+            "Wednesday": [
+                {"subject": "IDM", "units": 1, "is_lab": false},
+                {"subject": "COA", "units": 1, "is_lab": false},
+                {"subject": "ALA", "units": 1, "is_lab": false},
+                {"subject": "IM", "units": 1, "is_lab": false}
+            ],
+            "Thursday": [
+                {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+                {"subject": "COA", "units": 1, "is_lab": false},
+                {"subject": "CSW2", "units": 1, "is_lab": true}
+            ],
+            "Friday": [
+                {"subject": "AD2", "units": 1, "is_lab": true},
+                {"subject": "CSW2", "units": 1, "is_lab": true}
+            ],
+            "Saturday": [
+                {"subject": "CSW2", "units": 1, "is_lab": true},
+                {"subject": "AD2", "units": 1, "is_lab": true}
+            ]
+        },
+        "total_weekly_classes": 18
+    }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+    "Monday": ["COA", "IDM", "IM", "ALA"],
+    "Tuesday": ["ALA", "ALA", "IM", "COA LAB"],
+    "Wednesday": ["IDM", "COA", "ALA", "IM"],
+    "Thursday": ["AD2 LAB", "COA LAB", "CSW2 LAB"],
+    "Friday": ["AD2 LAB", "CSW2 LAB"],
+    "Saturday": ["CSW2 LAB", "AD2 LAB"],
+    "_analytics": {
+        "day_entries": {
+            "Monday": [
+                {"subject": "COA", "units": 1, "is_lab": false},
+                {"subject": "IDM", "units": 1, "is_lab": false},
+                {"subject": "IM", "units": 1, "is_lab": false},
+                {"subject": "ALA", "units": 1, "is_lab": false}
+            ],
+            "Tuesday": [
+                {"subject": "ALA", "units": 2, "is_lab": false},
+                {"subject": "IM", "units": 1, "is_lab": false},
+                {"subject": "COA LAB", "units": 1, "is_lab": true}
+            ],
+            "Wednesday": [
+                {"subject": "IDM", "units": 1, "is_lab": false},
+                {"subject": "COA", "units": 1, "is_lab": false},
+                {"subject": "ALA", "units": 1, "is_lab": false},
+                {"subject": "IM", "units": 1, "is_lab": false}
+            ],
+            "Thursday": [
+                {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+                {"subject": "COA LAB", "units": 1, "is_lab": true},
+                {"subject": "CSW2 LAB", "units": 1, "is_lab": true}
+            ],
+            "Friday": [
+                {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+                {"subject": "CSW2 LAB", "units": 1, "is_lab": true}
+            ],
+            "Saturday": [
+                {"subject": "CSW2 LAB", "units": 1, "is_lab": true},
+                {"subject": "AD2 LAB", "units": 1, "is_lab": true}
+            ]
+        },
+        "total_weekly_classes": 18
+    }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB", "COA LAB", "CSW2 LAB"],
+  "Friday": ["AD2 LAB", "CSW2 LAB"],
+  "Saturday": ["CSW2 LAB", "AD2 LAB"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 2, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "COA LAB", "units": 1, "is_lab": true},
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true}
+      ],
+      "Friday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true},
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true}
+      ]
+    },
+    "total_weekly_classes": 20
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB", "COA LAB", "CSW2 LAB"],
+  "Friday": ["AD2 LAB", "CSW2 LAB"],
+  "Saturday": ["CSW2 LAB", "AD2 LAB"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 2, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "COA LAB", "units": 1, "is_lab": true},
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true}
+      ],
+      "Friday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true},
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true}
+      ]
+    },
+    "total_weekly_classes": 20
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB", "COA LAB", "CSW2 LAB"],
+  "Friday": ["AD2 LAB", "CSW2 LAB"],
+  "Saturday": ["CSW2 LAB", "AD2 LAB"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 2, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "COA LAB", "units": 1, "is_lab": true},
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true}
+      ],
+      "Friday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true},
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true}
+      ]
+    },
+    "total_weekly_classes": 20
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB (E-310)"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB (CL-501)", "COA (CL-501)", "CSW2 (CL-501)"],
+  "Friday": ["AD2 (CL-501)", "CSW2 (CL-501)"],
+  "Saturday": ["CSW2 (CL-501)", "AD2 (CL-501)"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 2, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2", "units": 1, "is_lab": true},
+        {"subject": "COA", "units": 1, "is_lab": true},
+        {"subject": "CSW2", "units": 1, "is_lab": true}
+      ],
+      "Friday": [
+        {"subject": "AD2", "units": 1, "is_lab": true},
+        {"subject": "CSW2", "units": 1, "is_lab": true}
+      ],
+      "Saturday": [
+        {"subject": "CSW2", "units": 1, "is_lab": true},
+        {"subject": "AD2", "units": 1, "is_lab": true}
+      ]
+    },
+    "needs_clarification": [],
+    "total_weekly_classes": 18
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+    "Monday": ["COA", "IDM", "IM", "ALA"],
+    "Tuesday": ["ALA", "ALA", "IM", "COA LAB"],
+    "Wednesday": ["IDM", "COA", "ALA", "IM"],
+    "Thursday": ["AD2 LAB", "COA LAB", "CSW2"],
+    "Friday": ["AD2", "CSW2"],
+    "Saturday": ["CSW2", "AD2"],
+    "_analytics": {
+        "day_entries": {
+            "Monday": [
+                {"subject": "COA", "units": 1, "is_lab": false},
+                {"subject": "IDM", "units": 1, "is_lab": false},
+                {"subject": "IM", "units": 1, "is_lab": false},
+                {"subject": "ALA", "units": 1, "is_lab": false}
+            ],
+            "Tuesday": [
+                {"subject": "ALA", "units": 2, "is_lab": false},
+                {"subject": "IM", "units": 1, "is_lab": false},
+                {"subject": "COA LAB", "units": 1, "is_lab": true}
+            ],
+            "Wednesday": [
+                {"subject": "IDM", "units": 1, "is_lab": false},
+                {"subject": "COA", "units": 1, "is_lab": false},
+                {"subject": "ALA", "units": 1, "is_lab": false},
+                {"subject": "IM", "units": 1, "is_lab": false}
+            ],
+            "Thursday": [
+                {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+                {"subject": "COA LAB", "units": 1, "is_lab": true},
+                {"subject": "CSW2", "units": 1, "is_lab": false}
+            ],
+            "Friday": [
+                {"subject": "AD2", "units": 1, "is_lab": false},
+                {"subject": "CSW2", "units": 1, "is_lab": false}
+            ],
+            "Saturday": [
+                {"subject": "CSW2", "units": 1, "is_lab": false},
+                {"subject": "AD2", "units": 1, "is_lab": false}
+            ]
+        },
+        "needs_clarification": [
+            {"subject": "Applied Linear Algebra", "reason": "This subject has both theory and lab, but lab is not explicitly marked. On which day is its lab conducted?"},
+            {"subject": "Introduction to Disaster Management", "reason": "This subject has both theory and lab, but lab is not explicitly marked. On which day is its lab conducted?"},
+            {"subject": "Introduction to Macroeconomics", "reason": "This subject has both theory and lab, but lab is not explicitly marked. On which day is its lab conducted?"}
+        ],
+        "total_weekly_classes": 21
+    }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB", "COA", "CSW2"],
+  "Friday": ["AD2 LAB", "CSW2"],
+  "Saturday": ["CSW2", "AD2"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 2, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "CSW2", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "CSW2", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "CSW2", "units": 1, "is_lab": false},
+        {"subject": "AD2", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "AD2",
+        "reason": "This subject has both theory and lab but the lab is not explicitly marked. Which day is its lab session?",
+        "practicals_missing": 1
+      }
+    ],
+    "total_weekly_classes": 18,
+    "summary_by_subject": {
+      "ALA": {
+        "Theory classes/week": 4,
+        "Lab classes/week": 0,
+        "Total attendance": 4
+      },
+      "IM": {
+        "Theory classes/week": 3,
+        "Lab classes/week": 0,
+        "Total attendance": 3
+      },
+      "COA": {
+        "Theory classes/week": 3,
+        "Lab classes/week": 1,
+        "Total attendance": 4
+      },
+      "IDM": {
+        "Theory classes/week": 2,
+        "Lab classes/week": 0,
+        "Total attendance": 2
+      },
+      "AD2": {
+        "Theory classes/week": 1,
+        "Lab classes/week": 2,
+        "Total attendance": 3
+      },
+      "CSW2": {
+        "Theory classes/week": 3,
+        "Lab classes/week": 0,
+        "Total attendance": 3
+      }
+    }
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB", "COA", "CSW2"],
+  "Friday": ["AD2 LAB", "CSW2"],
+  "Saturday": ["CSW2", "AD2"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 2, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "CSW2", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "CSW2", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "CSW2", "units": 1, "is_lab": false},
+        {"subject": "AD2", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "AD2",
+        "reason": "This subject has both theory and lab but the lab is not explicitly marked. Which day is its lab session?",
+        "practicals_missing": 1
+      }
+    ],
+    "total_weekly_classes": 18,
+    "summary_by_subject": {
+      "ALA": {
+        "Theory classes/week": 4,
+        "Lab classes/week": 0,
+        "Total attendance": 4
+      },
+      "COA": {
+        "Theory classes/week": 3,
+        "Lab classes/week": 1,
+        "Total attendance": 4
+      },
+      "IDM": {
+        "Theory classes/week": 2,
+        "Lab classes/week": 0,
+        "Total attendance": 2
+      },
+      "IM": {
+        "Theory classes/week": 3,
+        "Lab classes/week": 0,
+        "Total attendance": 3
+      },
+      "CSW2": {
+        "Theory classes/week": 3,
+        "Lab classes/week": 0,
+        "Total attendance": 3
+      },
+      "AD2": {
+        "Theory classes/week": 1,
+        "Lab classes/week": 2,
+        "Total attendance": 3
+      }
+    }
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB", "COA", "CSW2"],
+  "Friday": ["AD2", "CSW2"],
+  "Saturday": ["CSW2", "AD2"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 2, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "CSW2", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "AD2", "units": 1, "is_lab": false},
+        {"subject": "CSW2", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "CSW2", "units": 1, "is_lab": false},
+        {"subject": "AD2", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [],
+    "total_weekly_classes": 20,
+    "summary_by_subject": {
+      "MTH 3003 - Applied Linear Algebra (ALA)": {
+        "Theory classes/week": 4,
+        "Lab classes/week": 0,
+        "Total attendance": 4
+      },
+      "CSE 2632 - Algorithms Analysis and Design 2 (AD2)": {
+        "Theory classes/week": 2,
+        "Lab classes/week": 1,
+        "Total attendance": 3
+      },
+      "CHM 2042 - Introduction to Disaster Management (IDM)": {
+        "Theory classes/week": 2,
+        "Lab classes/week": 0,
+        "Total attendance": 2
+      },
+      "HSS 2024 - Introduction to Macroeconomics (IM)": {
+        "Theory classes/week": 3,
+        "Lab classes/week": 0,
+        "Total attendance": 3
+      },
+      "CSE 3141 - Computer Science Workshop 2 (CSW2)": {
+        "Theory classes/week": 3,
+        "Lab classes/week": 0,
+        "Total attendance": 3
+      },
+      "EET 2211 - Computer Organisation and Architecture (COA)": {
+        "Theory classes/week": 4,
+        "Lab classes/week": 1,
+        "Total attendance": 5
+      }
+    }
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": [
+    "COA",
+    "IDM",
+    "IM",
+    "ALA"
+  ],
+  "Tuesday": [
+    "ALA",
+    "ALA",
+    "IM",
+    "COA LAB"
+  ],
+  "Wednesday": [
+    "IDM",
+    "COA",
+    "ALA",
+    "IM"
+  ],
+  "Thursday": [
+    "AD2 LAB",
+    "COA",
+    "CSW2"
+  ],
+  "Friday": [
+    "AD2",
+    "CSW2"
+  ],
+  "Saturday": [
+    "CSW2",
+    "AD2"
+  ],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 2, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "CSW2", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "AD2", "units": 1, "is_lab": false},
+        {"subject": "CSW2", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "CSW2", "units": 1, "is_lab": false},
+        {"subject": "AD2", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [],
+    "total_weekly_classes": 20,
+    "summary_by_subject": {
+      "Applied Linear Algebra": {"Theory classes/week": 4, "Lab classes/week": 0, "Total attendance": 4},
+      "Algorithms Analysis and Design 2": {"Theory classes/week": 2, "Lab classes/week": 1, "Total attendance": 3},
+      "Introduction to Disaster Management": {"Theory classes/week": 2, "Lab classes/week": 0, "Total attendance": 2},
+      "Introduction to Macroeconomics": {"Theory classes/week": 0, "Lab classes/week": 0, "Total attendance": 0},
+      "Computer Science Workshop 2": {"Theory classes/week": 2, "Lab classes/week": 1, "Total attendance": 3},
+      "Computer Organisation and Architecture": {"Theory classes/week": 3, "Lab classes/week": 1, "Total attendance": 4},
+      "Industrial Management (IM)": {"Theory classes/week": 3, "Lab classes/week": 0, "Total attendance": 3}
+    }
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB", "COA", "CSW2"],
+  "Friday": ["AD2", "CSW2"],
+  "Saturday": ["CSW2", "AD2"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 2, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2", "units": 1, "is_lab": true},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "CSW2", "units": 1, "is_lab": true}
+      ],
+      "Friday": [
+        {"subject": "AD2", "units": 1, "is_lab": true},
+        {"subject": "CSW2", "units": 1, "is_lab": true}
+      ],
+      "Saturday": [
+        {"subject": "CSW2", "units": 1, "is_lab": true},
+        {"subject": "AD2", "units": 1, "is_lab": true}
+      ]
+    },
+    "needs_clarification": [],
+    "total_weekly_classes": 19,
+    "summary_by_subject": {
+      "MTH 3003 - Applied Linear Algebra (ALA)": {
+        "Theory classes/week": 4,
+        "Lab classes/week": 0,
+        "Total attendance": 4
+      },
+      "CSE 2632 - Algorithms Analysis and Design 2 (AD2)": {
+        "Theory classes/week": 0,
+        "Lab classes/week": 3,
+        "Total attendance": 3
+      },
+      "CHM 2042 - Introduction to Disaster Management (IDM)": {
+        "Theory classes/week": 2,
+        "Lab classes/week": 0,
+        "Total attendance": 2
+      },
+      "HSS 2024 - Introduction to Macroeconomics (IM)": {
+        "Theory classes/week": 3,
+        "Lab classes/week": 0,
+        "Total attendance": 3
+      },
+      "CSE 3141 - Computer Science Workshop 2 (CSW2)": {
+        "Theory classes/week": 0,
+        "Lab classes/week": 3,
+        "Total attendance": 3
+      },
+      "EET 2211 - Computer Organisation and Architecture (COA)": {
+        "Theory classes/week": 3,
+        "Lab classes/week": 1,
+        "Total attendance": 4
+      }
+    }
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB", "COA LAB", "CSW2 LAB"],
+  "Friday": ["AD2 LAB", "CSW2 LAB"],
+  "Saturday": ["CSW2 LAB", "AD2 LAB"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 2, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "COA LAB", "units": 1, "is_lab": true},
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true}
+      ],
+      "Friday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true},
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true}
+      ]
+    },
+    "needs_clarification": [],
+    "total_weekly_classes": 20,
+    "summary_by_subject": {
+      "MTH 3003 - Applied Linear Algebra": {
+        "Theory classes/week": 4,
+        "Lab classes/week": 0,
+        "Total attendance": 4
+      },
+      "CSE 2632 - Algorithms Analysis and Design 2": {
+        "Theory classes/week": 0,
+        "Lab classes/week": 3,
+        "Total attendance": 3
+      },
+      "CHM 2042 - Introduction to Disaster Management": {
+        "Theory classes/week": 2,
+        "Lab classes/week": 0,
+        "Total attendance": 2
+      },
+      "HSS 2024 - Introduction to Macroeconomics": {
+        "Theory classes/week": 0,
+        "Lab classes/week": 0,
+        "Total attendance": 0
+      },
+      "CSE 3141 - Computer Science Workshop 2": {
+        "Theory classes/week": 0,
+        "Lab classes/week": 3,
+        "Total attendance": 3
+      },
+      "EET 2211 - Computer Organisation and Architecture": {
+        "Theory classes/week": 2,
+        "Lab classes/week": 2,
+        "Total attendance": 4
+      },
+      "IM": {
+        "Theory classes/week": 3,
+        "Lab classes/week": 0,
+        "Total attendance": 3
+      }
+    }
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB", "COA", "CSW2"],
+  "Friday": ["AD2", "CSW2"],
+  "Saturday": ["CSW2", "AD2"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "CSW2", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "AD2", "units": 1, "is_lab": false},
+        {"subject": "CSW2", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "CSW2", "units": 1, "is_lab": false},
+        {"subject": "AD2", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [],
+    "total_weekly_classes": 21,
+    "summary_by_subject": {
+      "MTH 3003 (ALA)": {
+        "Theory classes/week": 4,
+        "Lab classes/week": 0,
+        "Total attendance": 4
+      },
+      "CSE 2632 (AD2)": {
+        "Theory classes/week": 2,
+        "Lab classes/week": 1,
+        "Total attendance": 3
+      },
+      "CHM 2042 (IDM)": {
+        "Theory classes/week": 2,
+        "Lab classes/week": 0,
+        "Total attendance": 2
+      },
+      "HSS 2024 (IM)": {
+        "Theory classes/week": 3,
+        "Lab classes/week": 0,
+        "Total attendance": 3
+      },
+      "CSE 3141 (CSW2)": {
+        "Theory classes/week": 3,
+        "Lab classes/week": 0,
+        "Total attendance": 3
+      },
+      "EET 2211 (COA)": {
+        "Theory classes/week": 5,
+        "Lab classes/week": 1,
+        "Total attendance": 6
+      }
+    }
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB", "COA", "CSW2"],
+  "Friday": ["AD2", "CSW2"],
+  "Saturday": ["CSW2", "AD2"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 2, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "CSW2", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "AD2", "units": 1, "is_lab": false},
+        {"subject": "CSW2", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "CSW2", "units": 1, "is_lab": false},
+        {"subject": "AD2", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [],
+    "total_weekly_classes": 20,
+    "summary_by_subject": {
+      "MTH 3003": {"Theory classes/week": 0, "Lab classes/week": 0, "Total attendance": 0},
+      "ALA": {"Theory classes/week": 4, "Lab classes/week": 0, "Total attendance": 4},
+      "IM": {"Theory classes/week": 3, "Lab classes/week": 0, "Total attendance": 3},
+      "COA": {"Theory classes/week": 3, "Lab classes/week": 1, "Total attendance": 4},
+      "IDM": {"Theory classes/week": 2, "Lab classes/week": 0, "Total attendance": 2},
+      "AD2": {"Theory classes/week": 2, "Lab classes/week": 1, "Total attendance": 3},
+      "CSW2": {"Theory classes/week": 3, "Lab classes/week": 0, "Total attendance": 3}
+    }
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB", "COA LAB", "CSW2 LAB"],
+  "Friday": ["AD2 LAB", "CSW2 LAB"],
+  "Saturday": ["CSW2 LAB", "AD2 LAB"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 2, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "COA LAB", "units": 1, "is_lab": true},
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true}
+      ],
+      "Friday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true},
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true}
+      ]
+    },
+    "needs_clarification": [],
+    "total_weekly_classes": 19,
+    "summary_by_subject": {
+      "MTH 3003": {"Theory classes/week": 0, "Lab classes/week": 0, "Total attendance": 0},
+      "ALA": {"Theory classes/week": 4, "Lab classes/week": 0, "Total attendance": 4},
+      "IM": {"Theory classes/week": 3, "Lab classes/week": 0, "Total attendance": 3},
+      "COA": {"Theory classes/week": 2, "Lab classes/week": 2, "Total attendance": 4},
+      "IDM": {"Theory classes/week": 2, "Lab classes/week": 0, "Total attendance": 2},
+      "AD2": {"Theory classes/week": 0, "Lab classes/week": 3, "Total attendance": 3},
+      "CSW2": {"Theory classes/week": 0, "Lab classes/week": 3, "Total attendance": 3}
+    }
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB", "COA", "CSW2"],
+  "Friday": ["AD2", "CSW2"],
+  "Saturday": ["CSW2", "AD2"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 2, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "CSW2", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "AD2", "units": 1, "is_lab": false},
+        {"subject": "CSW2", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "CSW2", "units": 1, "is_lab": false},
+        {"subject": "AD2", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [],
+    "total_weekly_classes": 22,
+    "summary_by_subject": {
+      "MTH 3003 (ALA)": {
+        "Theory classes/week": 4,
+        "Lab classes/week": 0,
+        "Total attendance": 4
+      },
+      "CSE 2632 (AD2)": {
+        "Theory classes/week": 2,
+        "Lab classes/week": 1,
+        "Total attendance": 3
+      },
+      "CHM 2042 (IDM)": {
+        "Theory classes/week": 2,
+        "Lab classes/week": 0,
+        "Total attendance": 2
+      },
+      "HSS 2024 (IM)": {
+        "Theory classes/week": 3,
+        "Lab classes/week": 0,
+        "Total attendance": 3
+      },
+      "CSE 3141 (CSW2)": {
+        "Theory classes/week": 3,
+        "Lab classes/week": 0,
+        "Total attendance": 3
+      },
+      "EET 2211 (COA)": {
+        "Theory classes/week": 6,
+        "Lab classes/week": 1,
+        "Total attendance": 7
+      }
+    }
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB", "COA LAB", "CSW2 LAB"],
+  "Friday": ["AD2 LAB", "CSW2 LAB"],
+  "Saturday": ["CSW2 LAB", "AD2 LAB"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 2, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "COA LAB", "units": 1, "is_lab": true},
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true}
+      ],
+      "Friday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true},
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true}
+      ]
+    },
+    "needs_clarification": [],
+    "total_weekly_classes": 19,
+    "summary_by_subject": {
+      "ALA": {
+        "Theory classes/week": 4,
+        "Lab classes/week": 0,
+        "Total attendance": 4
+      },
+      "COA": {
+        "Theory classes/week": 2,
+        "Lab classes/week": 2,
+        "Total attendance": 4
+      },
+      "IDM": {
+        "Theory classes/week": 2,
+        "Lab classes/week": 0,
+        "Total attendance": 2
+      },
+      "IM": {
+        "Theory classes/week": 3,
+        "Lab classes/week": 0,
+        "Total attendance": 3
+      },
+      "AD2": {
+        "Theory classes/week": 0,
+        "Lab classes/week": 3,
+        "Total attendance": 3
+      },
+      "CSW2": {
+        "Theory classes/week": 0,
+        "Lab classes/week": 3,
+        "Total attendance": 3
+      }
+    }
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB", "COA", "CSW2"],
+  "Friday": ["AD2", "CSW2"],
+  "Saturday": ["CSW2", "AD2"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 2, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "CSW2", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "AD2", "units": 1, "is_lab": false},
+        {"subject": "CSW2", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "CSW2", "units": 1, "is_lab": false},
+        {"subject": "AD2", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [],
+    "total_weekly_classes": 20,
+    "summary_by_subject": {
+      "MTH 3003": {"Theory classes/week": 0, "Lab classes/week": 0, "Total attendance": 0},
+      "CSE 2632": {"Theory classes/week": 2, "Lab classes/week": 1, "Total attendance": 3},
+      "CHM 2042": {"Theory classes/week": 2, "Lab classes/week": 0, "Total attendance": 2},
+      "HSS 2024": {"Theory classes/week": 0, "Lab classes/week": 0, "Total attendance": 0},
+      "CSE 3141": {"Theory classes/week": 3, "Lab classes/week": 0, "Total attendance": 3},
+      "EET 2211": {"Theory classes/week": 3, "Lab classes/week": 1, "Total attendance": 4},
+      "ALA": {"Theory classes/week": 4, "Lab classes/week": 0, "Total attendance": 4},
+      "IM": {"Theory classes/week": 3, "Lab classes/week": 0, "Total attendance": 3},
+      "IDM": {"Theory classes/week": 2, "Lab classes/week": 0, "Total attendance": 2},
+      "COA": {"Theory classes/week": 3, "Lab classes/week": 1, "Total attendance": 4},
+      "AD2": {"Theory classes/week": 2, "Lab classes/week": 1, "Total attendance": 3},
+      "CSW2": {"Theory classes/week": 3, "Lab classes/week": 0, "Total attendance": 3}
+    }
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB", "COA LAB", "CSW2 LAB"],
+  "Friday": ["AD2 LAB", "CSW2 LAB"],
+  "Saturday": ["CSW2 LAB", "AD2 LAB"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 2, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "COA LAB", "units": 1, "is_lab": true},
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true}
+      ],
+      "Friday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true},
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true}
+      ]
+    },
+    "needs_clarification": [],
+    "total_weekly_classes": 18,
+    "summary_by_subject": {
+      "ALA": {
+        "Theory classes/week": 4,
+        "Lab classes/week": 0,
+        "Total attendance": 4
+      },
+      "COA": {
+        "Theory classes/week": 2,
+        "Lab classes/week": 2,
+        "Total attendance": 4
+      },
+      "IDM": {
+        "Theory classes/week": 2,
+        "Lab classes/week": 0,
+        "Total attendance": 2
+      },
+      "IM": {
+        "Theory classes/week": 3,
+        "Lab classes/week": 0,
+        "Total attendance": 3
+      },
+      "AD2": {
+        "Theory classes/week": 0,
+        "Lab classes/week": 3,
+        "Total attendance": 3
+      },
+      "CSW2": {
+        "Theory classes/week": 0,
+        "Lab classes/week": 3,
+        "Total attendance": 3
+      }
+    }
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB", "COA LAB", "CSW2 LAB"],
+  "Friday": ["AD2 LAB", "CSW2 LAB"],
+  "Saturday": ["CSW2 LAB", "AD2 LAB"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 2, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "COA LAB", "units": 1, "is_lab": true},
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true}
+      ],
+      "Friday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 LAB", "units": 1, "is_lab": true},
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true}
+      ]
+    },
+    "needs_clarification": [],
+    "total_weekly_classes": 19,
+    "summary_by_subject": {
+      "MTH 3003 (ALA)": {
+        "Theory classes/week": 5,
+        "Lab classes/week": 0,
+        "Total attendance": 5
+      },
+      "CSE 2632 (AD2)": {
+        "Theory classes/week": 0,
+        "Lab classes/week": 3,
+        "Total attendance": 3
+      },
+      "CHM 2042 (IDM)": {
+        "Theory classes/week": 2,
+        "Lab classes/week": 0,
+        "Total attendance": 2
+      },
+      "HSS 2024 (IM)": {
+        "Theory classes/week": 3,
+        "Lab classes/week": 0,
+        "Total attendance": 3
+      },
+      "CSE 3141 (CSW2)": {
+        "Theory classes/week": 0,
+        "Lab classes/week": 3,
+        "Total attendance": 3
+      },
+      "EET 2211 (COA)": {
+        "Theory classes/week": 2,
+        "Lab classes/week": 2,
+        "Total attendance": 4
+      }
+    }
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB (E-310)"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB (CL-501)", "COA (CL-501)", "CSW2 (CL-501)"],
+  "Friday": ["AD2 (CL-501)", "CSW2 (CL-501)"],
+  "Saturday": ["CSW2 (CL-501)", "AD2 (CL-501)"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 2, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB (E-310)", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "COA (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [],
+    "total_weekly_classes": 20,
+    "summary_by_subject": {
+      "MTH 3003": {"Theory classes/week": 0, "Lab classes/week": 0, "Total attendance": 0},
+      "ALA": {"Theory classes/week": 5, "Lab classes/week": 0, "Total attendance": 5},
+      "IM": {"Theory classes/week": 3, "Lab classes/week": 0, "Total attendance": 3},
+      "COA": {"Theory classes/week": 2, "Lab classes/week": 1, "Total attendance": 3},
+      "IDM": {"Theory classes/week": 2, "Lab classes/week": 0, "Total attendance": 2},
+      "AD2": {"Theory classes/week": 3, "Lab classes/week": 1, "Total attendance": 4},
+      "CSW2": {"Theory classes/week": 3, "Lab classes/week": 0, "Total attendance": 3}
+    }
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB (E-310)"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB (CL-501)", "COA (CL-501)", "CSW2 (CL-501)"],
+  "Friday": ["AD2 (CL-501)", "CSW2 (CL-501)"],
+  "Saturday": ["CSW2 (CL-501)", "AD2 (CL-501)"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB (E-310)", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "COA (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [],
+    "total_weekly_classes": 20,
+    "summary_by_subject": {
+      "MTH 3003 - APPLIED LINEAR ALGEBRA": {
+        "Theory classes/week": 4,
+        "Lab classes/week": 0,
+        "Total attendance": 4
+      },
+      "CSE 2632 - ALGORITHMS ANALYSIS AND DESIGN 2": {
+        "Theory classes/week": 2,
+        "Lab classes/week": 1,
+        "Total attendance": 3
+      },
+      "CHM 2042 - INTRODUCTION TO DISASTER MANAGEMENT": {
+        "Theory classes/week": 2,
+        "Lab classes/week": 0,
+        "Total attendance": 2
+      },
+      "HSS 2024 - INTRODUCTION TO MACROECONOMICS": {
+        "Theory classes/week": 3,
+        "Lab classes/week": 0,
+        "Total attendance": 3
+      },
+      "CSE 3141 - COMPUTER SCIENCE WORKSHOP 2": {
+        "Theory classes/week": 2,
+        "Lab classes/week": 1,
+        "Total attendance": 3
+      },
+      "EET 2211 - COMPUTER ORGANISATION AND ARCHITECTURE": {
+        "Theory classes/week": 4,
+        "Lab classes/week": 1,
+        "Total attendance": 5
+      }
+    }
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB (E-310)"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB (CL-501)", "COA (CL-501)", "CSW2 (CL-501)"],
+  "Friday": ["AD2 (CL-501)", "CSW2 (CL-501)"],
+  "Saturday": ["CSW2 (CL-501)", "AD2 (CL-501)"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB (E-310)", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "COA (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "MTH 3003 - APPLIED LINEAR ALGEBRA",
+        "reason": "ALA on Monday may span more than one slot. Is this block 1 slot or 2 slots wide?",
+        "is_width_clarification": true,
+        "day": "Monday"
+      }
+    ],
+    "total_weekly_classes": 20,
+    "summary_by_subject": {
+      "MTH 3003 - APPLIED LINEAR ALGEBRA": {"Theory classes/week": 4, "Lab classes/week": 0, "Total attendance": 4},
+      "CSE 2632 - ALGORITHMS ANALYSIS AND DESIGN 2": {"Theory classes/week": 2, "Lab classes/week": 1, "Total attendance": 3},
+      "CHM 2042 - INTRODUCTION TO DISASTER MANAGEMENT": {"Theory classes/week": 2, "Lab classes/week": 0, "Total attendance": 2},
+      "HSS 2024 - INTRODUCTION TO MACROECONOMICS": {"Theory classes/week": 0, "Lab classes/week": 0, "Total attendance": 0},
+      "CSE 3141 - COMPUTER SCIENCE WORKSHOP 2": {"Theory classes/week": 2, "Lab classes/week": 1, "Total attendance": 3},
+      "EET 2211 - COMPUTER ORGANISATION AND ARCHITECTURE": {"Theory classes/week": 3, "Lab classes/week": 1, "Total attendance": 4}
+    }
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB (E-310)"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB (CL-501)", "COA (CL-501)", "CSW2 (CL-501)"],
+  "Friday": ["AD2 (CL-501)", "CSW2 (CL-501)"],
+  "Saturday": ["CSW2 (CL-501)", "AD2 (CL-501)"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 2, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB (E-310)", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "COA (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 2, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "AD2 (CL-501) on Friday",
+        "reason": "AD2 (CL-501) on Friday may span more than one slot. Is this block 1 slot or 2 slots wide?",
+        "is_width_clarification": true
+      },
+      {
+        "subject": "CSW2 (CL-501) on Friday",
+        "reason": "CSW2 (CL-501) on Friday may span more than one slot. Is this block 1 slot or 2 slots wide?",
+        "is_width_clarification": true
+      },
+      {
+        "subject": "CSW2 (CL-501) on Saturday",
+        "reason": "CSW2 (CL-501) on Saturday may span more than one slot. Is this block 1 slot or 2 slots wide?",
+        "is_width_clarification": true
+      },
+      {
+        "subject": "AD2 (CL-501) on Saturday",
+        "reason": "AD2 (CL-501) on Saturday may span more than one slot. Is this block 1 slot or 2 slots wide?",
+        "is_width_clarification": true
+      }
+    ],
+    "total_weekly_classes": 20,
+    "summary_by_subject": {
+      "MTH 3003": {"Theory classes/week": 0, "Lab classes/week": 0, "Total attendance": 0},
+      "CSE 2632": {"Theory classes/week": 2, "Lab classes/week": 1, "Total attendance": 3},
+      "CHM 2042": {"Theory classes/week": 2, "Lab classes/week": 0, "Total attendance": 2},
+      "HSS 2024": {"Theory classes/week": 0, "Lab classes/week": 0, "Total attendance": 0},
+      "CSE 3141": {"Theory classes/week": 4, "Lab classes/week": 1, "Total attendance": 5},
+      "EET 2211": {"Theory classes/week": 4, "Lab classes/week": 1, "Total attendance": 5},
+      "ALA": {"Theory classes/week": 4, "Lab classes/week": 0, "Total attendance": 4},
+      "IM": {"Theory classes/week": 3, "Lab classes/week": 0, "Total attendance": 3}
+    }
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB (E-310)"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB (CL-501)", "COA LAB (CL-501)", "CSW2 (CL-501)"],
+  "Friday": ["AD2 (CL-501)", "CSW2 (CL-501)"],
+  "Saturday": ["CSW2 (CL-501)", "AD2 (CL-501)"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB (E-310)", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "COA LAB (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "CSW2 (CL-501)",
+        "reason": "CSW2 (CL-501) on Thursday may span more than one slot. Is this block 1 slot or 2 slots wide?",
+        "is_width_clarification": true,
+        "day": "Thursday"
+      },
+      {
+        "subject": "AD2 (CL-501)",
+        "reason": "AD2 (CL-501) on Friday may span more than one slot. Is this block 1 slot or 2 slots wide?",
+        "is_width_clarification": true,
+        "day": "Friday"
+      },
+      {
+        "subject": "CSW2 (CL-501)",
+        "reason": "CSW2 (CL-501) on Saturday may span more than one slot. Is this block 1 slot or 2 slots wide?",
+        "is_width_clarification": true,
+        "day": "Saturday"
+      },
+      {
+        "subject": "AD2 (CL-501)",
+        "reason": "AD2 (CL-501) on Saturday may span more than one slot. Is this block 1 slot or 2 slots wide?",
+        "is_width_clarification": true,
+        "day": "Saturday"
+      }
+    ],
+    "total_weekly_classes": 21,
+    "summary_by_subject": {
+      "MTH 3003": {"Theory classes/week": 0, "Lab classes/week": 0, "Total attendance": 0},
+      "CSE 2632": {"Theory classes/week": 2, "Lab classes/week": 1, "Total attendance": 3},
+      "CHM 2042": {"Theory classes/week": 2, "Lab classes/week": 0, "Total attendance": 2},
+      "HSS 2024": {"Theory classes/week": 3, "Lab classes/week": 0, "Total attendance": 3},
+      "CSE 3141": {"Theory classes/week": 3, "Lab classes/week": 0, "Total attendance": 3},
+      "EET 2211": {"Theory classes/week": 3, "Lab classes/week": 2, "Total attendance": 5}
+    }
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+    "Monday": ["COA", "IDM", "IM", "ALA"],
+    "Tuesday": ["ALA", "ALA", "IM", "COA LAB (E-310)"],
+    "Wednesday": ["IDM", "COA", "ALA", "IM"],
+    "Thursday": ["AD2 LAB (CL-501)", "COA (CL-501)", "CSW2 (CL-501)"],
+    "Friday": ["AD2 (CL-501)", "CSW2 (CL-501)"],
+    "Saturday": ["CSW2 (CL-501)", "AD2 (CL-501)"],
+    "_analytics": {
+        "day_entries": {
+            "Monday": [
+                {"subject": "COA", "units": 1, "is_lab": false},
+                {"subject": "IDM", "units": 1, "is_lab": false},
+                {"subject": "IM", "units": 1, "is_lab": false},
+                {"subject": "ALA", "units": 1, "is_lab": false}
+            ],
+            "Tuesday": [
+                {"subject": "ALA", "units": 1, "is_lab": false},
+                {"subject": "ALA", "units": 1, "is_lab": false},
+                {"subject": "IM", "units": 1, "is_lab": false},
+                {"subject": "COA LAB (E-310)", "units": 1, "is_lab": true}
+            ],
+            "Wednesday": [
+                {"subject": "IDM", "units": 1, "is_lab": false},
+                {"subject": "COA", "units": 1, "is_lab": false},
+                {"subject": "ALA", "units": 1, "is_lab": false},
+                {"subject": "IM", "units": 1, "is_lab": false}
+            ],
+            "Thursday": [
+                {"subject": "AD2 LAB (CL-501)", "units": 1, "is_lab": true},
+                {"subject": "COA (CL-501)", "units": 1, "is_lab": false},
+                {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+            ],
+            "Friday": [
+                {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false},
+                {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+            ],
+            "Saturday": [
+                {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false},
+                {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false}
+            ]
+        },
+        "needs_clarification": [
+            {
+                "subject": "AD2 (CL-501)",
+                "reason": "AD2 (CL-501) on Friday and Saturday may span more than one slot. Is this block 1 slot or 2 slots wide?",
+                "is_width_clarification": true,
+                "day": "Friday"
+            },
+            {
+                "subject": "CSW2 (CL-501)",
+                "reason": "CSW2 (CL-501) on Thursday, Friday and Saturday may span more than one slot. Is this block 1 slot or 2 slots wide?",
+                "is_width_clarification": true,
+                "day": "Thursday"
+            },
+            {
+                "subject": "COA (CL-501)",
+                "reason": "COA (CL-501) on Thursday may span more than one slot. Is this block 1 slot or 2 slots wide?",
+                "is_width_clarification": true,
+                "day": "Thursday"
+            }
+        ],
+        "total_weekly_classes": 21
+    }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB (E-310)"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB (CL-501)", "COA (CL-501)", "CSW2 (CL-501)"],
+  "Friday": ["AD2 (CL-501)", "CSW2 (CL-501)"],
+  "Saturday": ["CSW2 (CL-501)", "AD2 (CL-501)"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB (E-310)", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "COA (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": true}
+      ],
+      "Friday": [
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": true}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": true}
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "CSE 2632 - ALGORITHMS ANALYSIS AND DESIGN 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "EET 2211 - COMPUTER ORGANISATION AND ARCHITECTURE",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "CSE 3141 - COMPUTER SCIENCE WORKSHOP 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      }
+    ],
+    "total_weekly_classes": 22
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": [
+    "COA",
+    "IDM",
+    "IM",
+    "ALA"
+  ],
+  "Tuesday": [
+    "ALA",
+    "ALA",
+    "IM",
+    "COA LAB (E-310)"
+  ],
+  "Wednesday": [
+    "IDM",
+    "COA",
+    "ALA",
+    "IM"
+  ],
+  "Thursday": [
+    "AD2 LAB (CL-501)",
+    "COA (CL-501)",
+    "CSW2 (CL-501)"
+  ],
+  "Friday": [
+    "AD2 (CL-501)",
+    "CSW2 (CL-501)"
+  ],
+  "Saturday": [
+    "CSW2 (CL-501)",
+    "AD2 (CL-501)"
+  ],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB (E-310)", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "COA (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "CSE 2632 - ALGORITHMS ANALYSIS AND DESIGN 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "CSE 3141 - COMPUTER SCIENCE WORKSHOP 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "EET 2211 - COMPUTER ORGANISATION AND ARCHITECTURE",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      }
+    ],
+    "total_weekly_classes": 20
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB (E-310)"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB (CL-501)", "COA (CL-501)", "CSW2 (CL-501)"],
+  "Friday": ["AD2 (CL-501)", "CSW2 (CL-501)"],
+  "Saturday": ["CSW2 (CL-501)", "AD2 (CL-501)"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB (E-310)", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "COA (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "CSE 2632 - ALGORITHMS ANALYSIS AND DESIGN 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "EET 2211 - COMPUTER ORGANISATION AND ARCHITECTURE",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "CSE 3141 - COMPUTER SCIENCE WORKSHOP 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      }
+    ],
+    "total_weekly_classes": 20
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": [
+    "COA",
+    "IDM",
+    "IM",
+    "ALA"
+  ],
+  "Tuesday": [
+    "ALA",
+    "ALA",
+    "IM",
+    "COA LAB (E-310)"
+  ],
+  "Wednesday": [
+    "IDM",
+    "COA",
+    "ALA",
+    "IM"
+  ],
+  "Thursday": [
+    "AD2 LAB (CL-501)",
+    "COA (CL-501)",
+    "CSW2 (CL-501)"
+  ],
+  "Friday": [
+    "AD2 (CL-501)",
+    "CSW2 (CL-501)"
+  ],
+  "Saturday": [
+    "CSW2 (CL-501)",
+    "AD2 (CL-501)"
+  ],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        { "subject": "COA", "units": 1, "is_lab": false },
+        { "subject": "IDM", "units": 1, "is_lab": false },
+        { "subject": "IM", "units": 1, "is_lab": false },
+        { "subject": "ALA", "units": 1, "is_lab": false }
+      ],
+      "Tuesday": [
+        { "subject": "ALA", "units": 1, "is_lab": false },
+        { "subject": "ALA", "units": 1, "is_lab": false },
+        { "subject": "IM", "units": 1, "is_lab": false },
+        { "subject": "COA LAB (E-310)", "units": 1, "is_lab": true }
+      ],
+      "Wednesday": [
+        { "subject": "IDM", "units": 1, "is_lab": false },
+        { "subject": "COA", "units": 1, "is_lab": false },
+        { "subject": "ALA", "units": 1, "is_lab": false },
+        { "subject": "IM", "units": 1, "is_lab": false }
+      ],
+      "Thursday": [
+        { "subject": "AD2 LAB (CL-501)", "units": 1, "is_lab": true },
+        { "subject": "COA (CL-501)", "units": 1, "is_lab": false },
+        { "subject": "CSW2 (CL-501)", "units": 1, "is_lab": false }
+      ],
+      "Friday": [
+        { "subject": "AD2 (CL-501)", "units": 1, "is_lab": false },
+        { "subject": "CSW2 (CL-501)", "units": 1, "is_lab": false }
+      ],
+      "Saturday": [
+        { "subject": "CSW2 (CL-501)", "units": 1, "is_lab": false },
+        { "subject": "AD2 (CL-501)", "units": 1, "is_lab": false }
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "CSE 2632 - ALGORITHMS ANALYSIS AND DESIGN 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "CSE 3141 - COMPUTER SCIENCE WORKSHOP 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "EET 2211 - COMPUTER ORGANISATION AND ARCHITECTURE",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      }
+    ],
+    "total_weekly_classes": 23
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB (E-310)"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB (CL-501)", "COA (CL-501)", "CSW2 (CL-501)"],
+  "Friday": ["AD2 (CL-501)", "CSW2 (CL-501)"],
+  "Saturday": ["CSW2 (CL-501)", "AD2 (CL-501)"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 2, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB (E-310)", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "COA (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "COA",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "AD2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "CSW2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      }
+    ],
+    "total_weekly_classes": 21
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["APS LAB (E-309)", "AD2", "IM"],
+  "Tuesday": ["AD2 LAB (E-309)", "ALA", "ML2"],
+  "Wednesday": ["ALA", "ML2", "IM", "APS LAB (E-309)"],
+  "Thursday": ["ADSD (E-310)", "AD2", "APS"],
+  "Friday": ["IM", "APS", "ADSD", "ALA"],
+  "Saturday": ["ADSD (E-310)", "AD2", "ALA"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "APS LAB (E-309)", "units": 1, "is_lab": true},
+        {"subject": "AD2", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "AD2 LAB (E-309)", "units": 1, "is_lab": true},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "ML2", "units": 1, "is_lab": false}
+      ],
+      "Wednesday": [
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "ML2", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "APS LAB (E-309)", "units": 1, "is_lab": true}
+      ],
+      "Thursday": [
+        {"subject": "ADSD (E-310)", "units": 1, "is_lab": false},
+        {"subject": "AD2", "units": 1, "is_lab": false},
+        {"subject": "APS", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "APS", "units": 1, "is_lab": false},
+        {"subject": "ADSD", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "ADSD (E-310)", "units": 1, "is_lab": false},
+        {"subject": "AD2", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "APS",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Wednesday", "Friday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "AD2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Monday", "Thursday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "ADSD",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "ALA",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Tuesday", "Wednesday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      }
+    ],
+    "total_weekly_classes": 19
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB (E-310)"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB (CL-501)", "COA (CL-501)", "CSW2 (CL-501)"],
+  "Friday": ["AD2 (CL-501)", "CSW2 (CL-501)"],
+  "Saturday": ["CSW2 (CL-501)", "AD2 (CL-501)"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB (E-310)", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "COA (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": true}
+      ],
+      "Friday": [
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": true}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": true}
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "CSE 2632 - ALGORITHMS ANALYSIS AND DESIGN 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "CSE 3141 - COMPUTER SCIENCE WORKSHOP 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "EET 2211 - COMPUTER ORGANISATION AND ARCHITECTURE",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      }
+    ],
+    "total_weekly_classes": 21
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": [
+    "COA",
+    "IDM",
+    "IM",
+    "ALA"
+  ],
+  "Tuesday": [
+    "ALA",
+    "ALA",
+    "IM",
+    "COA LAB (E-310)"
+  ],
+  "Wednesday": [
+    "IDM",
+    "COA",
+    "ALA",
+    "IM"
+  ],
+  "Thursday": [
+    "AD2 LAB (CL-501)",
+    "COA (CL-501)",
+    "CSW2 (CL-501)"
+  ],
+  "Friday": [
+    "AD2 (CL-501)",
+    "CSW2 (CL-501)"
+  ],
+  "Saturday": [
+    "CSW2 (CL-501)",
+    "AD2 (CL-501)"
+  ],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB (E-310)", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "COA (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "CSE 2632 - ALGORITHMS ANALYSIS AND DESIGN 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "CSE 3141 - COMPUTER SCIENCE WORKSHOP 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "EET 2211 - COMPUTER ORGANISATION AND ARCHITECTURE",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      }
+    ],
+    "total_weekly_classes": 21
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB (E-310)"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB (CL-501)", "COA (CL-501)", "CSW2 (CL-501)"],
+  "Friday": ["AD2 (CL-501)", "CSW2 (CL-501)"],
+  "Saturday": ["CSW2 (CL-501)", "AD2 (CL-501)"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB (E-310)", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "COA (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "CSE 2632 - ALGORITHMS ANALYSIS AND DESIGN 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "EET 2211 - COMPUTER ORGANISATION AND ARCHITECTURE",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "CSE 3141 - COMPUTER SCIENCE WORKSHOP 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      }
+    ],
+    "total_weekly_classes": 21
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB (E-310)"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB (CL-501)", "COA (CL-501)", "CSW2 (CL-501)"],
+  "Friday": ["AD2 (CL-501)", "CSW2 (CL-501)"],
+  "Saturday": ["CSW2 (CL-501)", "AD2 (CL-501)"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB (E-310)", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "COA (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "CSE 2632 - ALGORITHMS ANALYSIS AND DESIGN 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "EET 2211 - COMPUTER ORGANISATION AND ARCHITECTURE",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "CSE 3141 - COMPUTER SCIENCE WORKSHOP 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      }
+    ],
+    "total_weekly_classes": 20
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB (E-310)"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB (CL-501)", "COA (CL-501)", "CSW2 (CL-501)"],
+  "Friday": ["AD2 (CL-501)", "CSW2 (CL-501)"],
+  "Saturday": ["CSW2 (CL-501)", "AD2 (CL-501)"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB (E-310)", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "COA (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "CSE 2632 - ALGORITHMS ANALYSIS AND DESIGN 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "EET 2211 - COMPUTER ORGANISATION AND ARCHITECTURE",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "CSE 3141 - COMPUTER SCIENCE WORKSHOP 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      }
+    ],
+    "total_weekly_classes": 20
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": [
+    "APS LAB (E-309)",
+    "AD2",
+    "IM"
+  ],
+  "Tuesday": [
+    "AD2 LAB (E-309)",
+    "ALA",
+    "ML2"
+  ],
+  "Wednesday": [
+    "ALA",
+    "ML2",
+    "IM",
+    "APS LAB (E-309)"
+  ],
+  "Thursday": [
+    "ADSD (E-310)",
+    "AD2",
+    "APS"
+  ],
+  "Friday": [
+    "IM",
+    "APS",
+    "ADSD",
+    "ALA"
+  ],
+  "Saturday": [
+    "ADSD (E-310)",
+    "AD2",
+    "ALA"
+  ],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {
+          "subject": "APS LAB (E-309)",
+          "units": 1,
+          "is_lab": true
+        },
+        {
+          "subject": "AD2",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "IM",
+          "units": 1,
+          "is_lab": false
+        }
+      ],
+      "Tuesday": [
+        {
+          "subject": "AD2 LAB (E-309)",
+          "units": 1,
+          "is_lab": true
+        },
+        {
+          "subject": "ALA",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "ML2",
+          "units": 1,
+          "is_lab": false
+        }
+      ],
+      "Wednesday": [
+        {
+          "subject": "ALA",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "ML2",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "IM",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "APS LAB (E-309)",
+          "units": 1,
+          "is_lab": true
+        }
+      ],
+      "Thursday": [
+        {
+          "subject": "ADSD (E-310)",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "AD2",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "APS",
+          "units": 1,
+          "is_lab": false
+        }
+      ],
+      "Friday": [
+        {
+          "subject": "IM",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "APS",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "ADSD",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "ALA",
+          "units": 1,
+          "is_lab": false
+        }
+      ],
+      "Saturday": [
+        {
+          "subject": "ADSD (E-310)",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "AD2",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "ALA",
+          "units": 1,
+          "is_lab": false
+        }
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "MTH 3003 - APPLIED LINEAR ALGEBRA",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Tuesday", "Wednesday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "CSE 2632 - ALGORITHMS ANALYSIS AND DESIGN 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Monday", "Tuesday", "Thursday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "CSE 2223 - ALGORITHMIC PROBLEMSOLVING STRATEGIES",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Monday", "Wednesday", "Thursday", "Friday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "CSE 2697 - ADVANCED DIGITAL SYSTEM DESIGN",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      }
+    ],
+    "total_weekly_classes": 20
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": [
+    "APS LAB (E-309)",
+    "AD2",
+    "IM"
+  ],
+  "Tuesday": [
+    "AD2 LAB (E-309)",
+    "ALA",
+    "ML2"
+  ],
+  "Wednesday": [
+    "ALA",
+    "ML2",
+    "IM",
+    "APS LAB (E-309)"
+  ],
+  "Thursday": [
+    "ADSD (E-310)",
+    "AD2",
+    "APS"
+  ],
+  "Friday": [
+    "IM",
+    "APS",
+    "ADSD",
+    "ALA"
+  ],
+  "Saturday": [
+    "ADSD (E-310)",
+    "AD2",
+    "ALA"
+  ],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {
+          "subject": "APS LAB (E-309)",
+          "units": 1,
+          "is_lab": true
+        },
+        {
+          "subject": "AD2",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "IM",
+          "units": 1,
+          "is_lab": false
+        }
+      ],
+      "Tuesday": [
+        {
+          "subject": "AD2 LAB (E-309)",
+          "units": 1,
+          "is_lab": true
+        },
+        {
+          "subject": "ALA",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "ML2",
+          "units": 1,
+          "is_lab": false
+        }
+      ],
+      "Wednesday": [
+        {
+          "subject": "ALA",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "ML2",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "IM",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "APS LAB (E-309)",
+          "units": 1,
+          "is_lab": true
+        }
+      ],
+      "Thursday": [
+        {
+          "subject": "ADSD (E-310)",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "AD2",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "APS",
+          "units": 1,
+          "is_lab": false
+        }
+      ],
+      "Friday": [
+        {
+          "subject": "IM",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "APS",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "ADSD",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "ALA",
+          "units": 1,
+          "is_lab": false
+        }
+      ],
+      "Saturday": [
+        {
+          "subject": "ADSD (E-310)",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "AD2",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "ALA",
+          "units": 1,
+          "is_lab": false
+        }
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "APPLIED LINEAR ALGEBRA",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": [
+          "Tuesday",
+          "Wednesday",
+          "Friday",
+          "Saturday"
+        ],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "ALGORITHMS ANALYSIS AND DESIGN 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": [
+          "Monday",
+          "Tuesday",
+          "Thursday",
+          "Saturday"
+        ],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "ALGORITHMIC PROBLEMSOLVING STRATEGIES",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": [
+          "Monday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "A FIRST COURSE IN MACHINE LEARNING 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": [
+          "Tuesday",
+          "Wednesday"
+        ],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "ADVANCED DIGITAL SYSTEM DESIGN",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": [
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      }
+    ],
+    "total_weekly_classes": 19
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": [
+    "APS LAB (E-309)",
+    "AD2",
+    "IM"
+  ],
+  "Tuesday": [
+    "AD2 LAB (E-309)",
+    "ALA",
+    "ML2"
+  ],
+  "Wednesday": [
+    "ALA",
+    "ML2",
+    "IM",
+    "APS LAB (E-309)"
+  ],
+  "Thursday": [
+    "ADSD (E-310)",
+    "AD2",
+    "APS"
+  ],
+  "Friday": [
+    "IM",
+    "APS",
+    "ADSD",
+    "ALA"
+  ],
+  "Saturday": [
+    "ADSD (E-310)",
+    "AD2",
+    "ALA"
+  ],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {
+          "subject": "APS LAB (E-309)",
+          "units": 1,
+          "is_lab": true
+        },
+        {
+          "subject": "AD2",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "IM",
+          "units": 1,
+          "is_lab": false
+        }
+      ],
+      "Tuesday": [
+        {
+          "subject": "AD2 LAB (E-309)",
+          "units": 1,
+          "is_lab": true
+        },
+        {
+          "subject": "ALA",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "ML2",
+          "units": 1,
+          "is_lab": false
+        }
+      ],
+      "Wednesday": [
+        {
+          "subject": "ALA",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "ML2",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "IM",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "APS LAB (E-309)",
+          "units": 1,
+          "is_lab": true
+        }
+      ],
+      "Thursday": [
+        {
+          "subject": "ADSD (E-310)",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "AD2",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "APS",
+          "units": 1,
+          "is_lab": false
+        }
+      ],
+      "Friday": [
+        {
+          "subject": "IM",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "APS",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "ADSD",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "ALA",
+          "units": 1,
+          "is_lab": false
+        }
+      ],
+      "Saturday": [
+        {
+          "subject": "ADSD (E-310)",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "AD2",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "ALA",
+          "units": 1,
+          "is_lab": false
+        }
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "MTH 3003 - APPLIED LINEAR ALGEBRA",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": [
+          "Tuesday",
+          "Wednesday",
+          "Friday",
+          "Saturday"
+        ],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "CSE 2632 - ALGORITHMS ANALYSIS AND DESIGN 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": [
+          "Monday",
+          "Tuesday",
+          "Thursday",
+          "Saturday"
+        ],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "CSE 2223 - ALGORITHMIC PROBLEMSOLVING STRATEGIES",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": [
+          "Monday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "CSE 2697 - ADVANCED DIGITAL SYSTEM DESIGN",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": [
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      }
+    ],
+    "total_weekly_classes": 20
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": [
+    "APS LAB (E-309)",
+    "AD2",
+    "IM"
+  ],
+  "Tuesday": [
+    "AD2 LAB (E-309)",
+    "ALA (E-421)",
+    "ML2 (E-421)"
+  ],
+  "Wednesday": [
+    "ALA",
+    "ML2",
+    "IM",
+    "APS LAB (E-309)"
+  ],
+  "Thursday": [
+    "ADSD (E-310)",
+    "AD2 (E-421)",
+    "APS (E-421)"
+  ],
+  "Friday": [
+    "IM",
+    "APS",
+    "ADSD",
+    "ALA"
+  ],
+  "Saturday": [
+    "ADSD (E-310)",
+    "AD2 (E-422)",
+    "ALA (E-422)"
+  ],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {
+          "subject": "APS LAB (E-309)",
+          "units": 1,
+          "is_lab": true
+        },
+        {
+          "subject": "AD2",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "IM",
+          "units": 1,
+          "is_lab": false
+        }
+      ],
+      "Tuesday": [
+        {
+          "subject": "AD2 LAB (E-309)",
+          "units": 1,
+          "is_lab": true
+        },
+        {
+          "subject": "ALA (E-421)",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "ML2 (E-421)",
+          "units": 1,
+          "is_lab": false
+        }
+      ],
+      "Wednesday": [
+        {
+          "subject": "ALA",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "ML2",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "IM",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "APS LAB (E-309)",
+          "units": 1,
+          "is_lab": true
+        }
+      ],
+      "Thursday": [
+        {
+          "subject": "ADSD (E-310)",
+          "units": 1,
+          "is_lab": true
+        },
+        {
+          "subject": "AD2 (E-421)",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "APS (E-421)",
+          "units": 1,
+          "is_lab": false
+        }
+      ],
+      "Friday": [
+        {
+          "subject": "IM",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "APS",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "ADSD",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "ALA",
+          "units": 1,
+          "is_lab": false
+        }
+      ],
+      "Saturday": [
+        {
+          "subject": "ADSD (E-310)",
+          "units": 1,
+          "is_lab": true
+        },
+        {
+          "subject": "AD2 (E-422)",
+          "units": 1,
+          "is_lab": false
+        },
+        {
+          "subject": "ALA (E-422)",
+          "units": 1,
+          "is_lab": false
+        }
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "MTH 3003 - APPLIED LINEAR ALGEBRA (ALA)",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Tuesday", "Wednesday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "CSE 2632 - ALGORITHMS ANALYSIS AND DESIGN 2 (AD2)",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Monday", "Tuesday", "Thursday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "CSE 2223 - ALGORITHMIC PROBLEMSOLVING STRATEGIES (APS)",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Monday", "Wednesday", "Friday", "Thursday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "CSE 2697 - ADVANCED DIGITAL SYSTEM DESIGN (ADSD)",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      }
+    ],
+    "total_weekly_classes": 19
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["APS LAB", "AD2", "IM"],
+  "Tuesday": ["AD2 LAB", "ALA", "ML2"],
+  "Wednesday": ["ALA", "ML2", "IM", "APS LAB"],
+  "Thursday": ["ADSD", "AD2", "APS"],
+  "Friday": ["IM", "APS", "ADSD", "ALA"],
+  "Saturday": ["ADSD", "AD2", "ALA"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "APS LAB", "units": 1, "is_lab": true},
+        {"subject": "AD2", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "ML2", "units": 1, "is_lab": false}
+      ],
+      "Wednesday": [
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "ML2", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "APS LAB", "units": 1, "is_lab": true}
+      ],
+      "Thursday": [
+        {"subject": "ADSD", "units": 1, "is_lab": false},
+        {"subject": "AD2", "units": 1, "is_lab": false},
+        {"subject": "APS", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "APS", "units": 1, "is_lab": false},
+        {"subject": "ADSD", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "ADSD", "units": 1, "is_lab": false},
+        {"subject": "AD2", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "APS",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Monday", "Wednesday", "Friday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "AD2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Monday", "Tuesday", "Thursday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "ALA",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Tuesday", "Wednesday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "ADSD",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      }
+    ],
+    "total_weekly_classes": 19
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB (E-310)"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB (CL-501)", "COA (CL-501)", "CSW2 (CL-501)"],
+  "Friday": ["AD2 (CL-501)", "CSW2 (CL-501)"],
+  "Saturday": ["CSW2 (CL-501)", "AD2 (CL-501)"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB (E-310)", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "COA (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "CSE 2632 - ALGORITHMS ANALYSIS AND DESIGN 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "EET 2211 - COMPUTER ORGANISATION AND ARCHITECTURE",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "CSE 3141 - COMPUTER SCIENCE WORKSHOP 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      }
+    ],
+    "total_weekly_classes": 21
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["COA", "IDM", "IM", "ALA"],
+  "Tuesday": ["ALA", "ALA", "IM", "COA LAB (E-310)"],
+  "Wednesday": ["IDM", "COA", "ALA", "IM"],
+  "Thursday": ["AD2 LAB (CL-501)", "COA (CL-501)", "CSW2 (CL-501)"],
+  "Friday": ["AD2 (CL-501)", "CSW2 (CL-501)"],
+  "Saturday": ["CSW2 (CL-501)", "AD2 (CL-501)"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Tuesday": [
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false},
+        {"subject": "COA LAB (E-310)", "units": 1, "is_lab": true}
+      ],
+      "Wednesday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "COA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "IM", "units": 1, "is_lab": false}
+      ],
+      "Thursday": [
+        {"subject": "AD2 LAB (CL-501)", "units": 1, "is_lab": true},
+        {"subject": "COA (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "CSW2 (CL-501)", "units": 1, "is_lab": false},
+        {"subject": "AD2 (CL-501)", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "CSE 2632 - ALGORITHMS ANALYSIS AND DESIGN 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "EET 2211 - COMPUTER ORGANISATION AND ARCHITECTURE",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "CSE 3141 - COMPUTER SCIENCE WORKSHOP 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      }
+    ],
+    "total_weekly_classes": 20
+  }
+}
+==========================
+=== AI TIMETABLE DEBUG ===
+{
+  "Monday": ["AI2", "AI2", "AD2", "APS LAB"],
+  "Tuesday": ["AD2", "AD2", "APS", "ALA", "ALA"],
+  "Wednesday": ["MLW 2", "AD2 LAB"],
+  "Thursday": ["IDM", "MLW 2"],
+  "Friday": ["APS", "MLW 2"],
+  "Saturday": ["APS LAB", "IDM", "ALA", "ALA"],
+  "_analytics": {
+    "day_entries": {
+      "Monday": [
+        {"subject": "AI2", "units": 1, "is_lab": false},
+        {"subject": "AI2", "units": 1, "is_lab": false},
+        {"subject": "AD2", "units": 1, "is_lab": false},
+        {"subject": "APS LAB", "units": 1, "is_lab": true}
+      ],
+      "Tuesday": [
+        {"subject": "AD2", "units": 1, "is_lab": false},
+        {"subject": "AD2", "units": 1, "is_lab": false},
+        {"subject": "APS", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ],
+      "Wednesday": [
+        {"subject": "MLW 2", "units": 1, "is_lab": false},
+        {"subject": "AD2 LAB", "units": 1, "is_lab": true}
+      ],
+      "Thursday": [
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "MLW 2", "units": 1, "is_lab": false}
+      ],
+      "Friday": [
+        {"subject": "APS", "units": 1, "is_lab": false},
+        {"subject": "MLW 2", "units": 1, "is_lab": false}
+      ],
+      "Saturday": [
+        {"subject": "APS LAB", "units": 1, "is_lab": true},
+        {"subject": "IDM", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false},
+        {"subject": "ALA", "units": 1, "is_lab": false}
+      ]
+    },
+    "needs_clarification": [
+      {
+        "subject": "MACHINE LEARNING WORKSHOP 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Wednesday", "Thursday", "Friday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "APPLIED LINEAR ALGEBRA",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Tuesday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "ALGORITHMS ANALYSIS AND DESIGN 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Monday", "Tuesday", "Wednesday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "INTRODUCTION TO DISASTER MANAGEMENT",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Thursday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      },
+      {
+        "subject": "A FIRST COURSE IN ARTIFICIAL INTELLIGENCE 2",
+        "is_per_day_slot_clarification": true,
+        "days_occurring": ["Monday", "Tuesday", "Friday", "Saturday"],
+        "reason": "This subject contains both Theory and Practicals. Please specify how many attendance slots (units) it counts for on each day it occurs."
+      }
+    ],
+    "total_weekly_classes": 21
+  }
+}
+==========================

@@ -1,0 +1,377 @@
+.calendar-container {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.calendar-cell {
+    min-height: 100px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 8px;
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: white;
+}
+
+.calendar-cell:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background: #f8f9fa;
+}
+
+/* Status colors for calendar cells */
+.calendar-cell.status-present {
+    background-color: #d1fae5 !important;
+    border: 2px solid #10b981;
+}
+
+.calendar-cell.status-absent {
+    background-color: #fee2e2 !important;
+    border: 2px solid #ef4444;
+}
+
+.calendar-cell.status-excused {
+    background-color: #fef3c7 !important;
+    border: 2px solid #f59e0b;
+}
+
+.calendar-cell.today {
+    border: 2px solid #3b82f6 !important;
+}
+
+.calendar-day {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.calendar-day:hover {
+    color: #333;
+}
+
+.day-number {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: black;
+}
+
+.attendance-badge {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.attendance-present {
+    background-color: #1cc88a;
+    color: white;
+}
+
+.attendance-absent {
+    background-color: #e74a3b;
+    color: white;
+}
+
+.attendance-late {
+    background-color: #f6c23e;
+    color: white;
+}
+
+.holiday-badge {
+    background-color: #858796;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.weekend {
+    background-color: #f8f9fc;
+}
+
+.subject-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 4px solid;
+}
+
+.subject-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.subject-card.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.percentage-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 auto;
+    border: 5px solid #1cc88a;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 15px;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.modal-close {
+    font-size: 28px;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.3s;
+}
+
+.modal-close:hover {
+    color: #333;
+}
+
+.modal-body {
+    margin-bottom: 20px;
+}
+
+.modal-body p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.modal-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-option {
+    padding: 15px 10px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background: white;
+    color: #333;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+
+.btn-option i {
+    font-size: 1.5rem;
+}
+
+.btn-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-present {
+    border-color: #10b981;
+    color: #10b981;
+}
+
+.btn-present:hover {
+    background: #d1fae5;
+}
+
+.btn-present.active {
+    background: #d1fae5;
+    border-color: #10b981;
+}
+
+.btn-absent {
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+.btn-absent:hover {
+    background: #fee2e2;
+}
+
+.btn-absent.active {
+    background: #fee2e2;
+    border-color: #ef4444;
+}
+
+.btn-excused {
+    border-color: #f59e0b;
+    color: #f59e0b;
+}
+
+.btn-excused:hover {
+    background: #fef3c7;
+}
+
+.btn-excused.active {
+    background: #fef3c7;
+    border-color: #f59e0b;
+}
+
+.btn-clear {
+    border-color: #999;
+    color: #999;
+}
+
+.btn-clear:hover {
+    background: #f5f5f5;
+}
+
+.btn-clear.active {
+    background: #f5f5f5;
+    border-color: #999;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    border-top: 2px solid #f0f0f0;
+    padding-top: 15px;
+}
+
+.btn-cancel {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #f0f0f0;
+    color: #333;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-cancel:hover {
+    background: #e0e0e0;
+}
+
+/* Legend styles */
+.legend {
+    margin-top: 2rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: white;
+    border: 2px solid #ddd;
+}
+
+.status-present {
+    border-color: #10b981;
+    color: #10b981;
+}
+
+.status-absent {
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+.status-excused {
+    border-color: #f59e0b;
+    color: #f59e0b;
+}
+
+.status-clear {
+    border-color: #999;
+    color: #999;
+}
+
+.status-badge.today {
+    border-color: #3b82f6;
+    color: #3b82f6;
+}
+
+.progress {
+    height: 3px;
+}
+
+.mark-attendance-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}

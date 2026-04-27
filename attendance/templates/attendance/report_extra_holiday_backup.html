@@ -1,0 +1,687 @@
+{% extends 'attendance/base.html' %}
+
+{% block title %}Report Extra Holiday{% endblock %}
+
+{% block extra_css %}
+<style>
+    .report-container {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 0;
+    }
+
+    .report-card {
+        background: var(--bg-glass);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--border-glass);
+        border-radius: 24px;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        overflow: hidden;
+        position: relative;
+        max-width: 700px;
+        width: 100%;
+    }
+
+    .report-header {
+        background: linear-gradient(135deg, rgba(251, 146, 60, 0.1), rgba(6, 182, 212, 0.1));
+        padding: 2.5rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .report-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--gradient-neon);
+    }
+
+    .report-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+        background: var(--gradient-neon);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .report-subtitle {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin-bottom: 0;
+    }
+
+    .report-icon {
+        font-size: 3rem;
+        color: var(--accent-amber);
+        margin-bottom: 1rem;
+        filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.3));
+    }
+
+    .report-body {
+        padding: 2.5rem;
+    }
+
+    .form-floating {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-floating > label {
+        color: var(--text-muted);
+        font-weight: 500;
+    }
+
+    .form-control, .form-select {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        color: var(--text-main);
+        padding: 1rem 1.2rem;
+        transition: all 0.3s ease;
+    }
+
+    .form-select option {
+        background: var(--bg-dark);
+        color: var(--text-main);
+        padding: 0.5rem;
+    }
+
+    .subject-option {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .subject-color-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .subject-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+    }
+
+    .subject-name {
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    .subject-code {
+        font-size: 0.75rem;
+        opacity: 0.7;
+    }
+
+    .form-control::placeholder {
+        color: rgba(161, 161, 170, 0.7);
+    }
+
+    .form-text {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+    }
+
+    .date-input-container {
+        position: relative;
+    }
+
+    .date-picker {
+        position: relative;
+        cursor: pointer;
+    }
+
+    .date-picker-icon {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--accent-cyan);
+        font-size: 1.2rem;
+        pointer-events: none;
+    }
+
+    .selected-dates {
+        margin-top: 0.5rem;
+        padding: 0.5rem;
+        background: rgba(6, 182, 212, 0.1);
+        border-radius: 8px;
+        border: 1px solid rgba(6, 182, 212, 0.2);
+        display: none;
+    }
+
+    .selected-dates.show {
+        display: block;
+    }
+
+    .date-tag {
+        display: inline-block;
+        background: rgba(6, 182, 212, 0.2);
+        color: var(--accent-cyan);
+        padding: 0.2rem 0.6rem;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        margin: 0.2rem;
+        border: 1px solid rgba(6, 182, 212, 0.3);
+    }
+
+    .remove-date {
+        margin-left: 0.3rem;
+        cursor: pointer;
+        opacity: 0.7;
+    }
+
+    .remove-date:hover {
+        opacity: 1;
+    }
+
+    .reason-container {
+        position: relative;
+    }
+
+    .reason-container::before {
+        content: '💬';
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        font-size: 1.2rem;
+        pointer-events: none;
+    }
+
+    .btn-submit {
+        background: var(--gradient-neon);
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 1rem;
+        color: white;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+        margin-right: 1rem;
+    }
+
+    .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(6, 182, 212, 0.4);
+    }
+
+    .btn-cancel {
+        background: rgba(244, 63, 94, 0.1);
+        border: 1px solid rgba(244, 63, 94, 0.2);
+        color: var(--accent-rose);
+        padding: 1rem 2rem;
+        border-radius: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-cancel:hover {
+        background: var(--accent-rose);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(244, 63, 94, 0.3);
+    }
+
+    .info-alert {
+        background: rgba(6, 182, 212, 0.1);
+        border: 1px solid rgba(6, 182, 212, 0.2);
+        border-radius: 12px;
+        padding: 1rem;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .info-alert i {
+        color: var(--accent-cyan);
+        font-size: 1.2rem;
+    }
+
+    .info-alert p {
+        margin: 0;
+        color: var(--text-main);
+        font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+        .report-container {
+            padding: 1rem;
+        }
+
+        .report-header {
+            padding: 2rem 1.5rem;
+        }
+
+        .report-title {
+            font-size: 1.8rem;
+        }
+
+        .report-body {
+            padding: 2rem 1.5rem;
+        }
+
+        .btn-submit, .btn-cancel {
+            width: 100%;
+            margin: 0.5rem 0;
+        }
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .report-card {
+        animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* Flatpickr custom styles */
+    .flatpickr-calendar {
+        background: var(--bg-glass) !important;
+        backdrop-filter: blur(16px) !important;
+        -webkit-backdrop-filter: blur(16px) !important;
+        border: 1px solid var(--border-glass) !important;
+        border-radius: 12px !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    .flatpickr-day {
+        color: var(--text-main) !important;
+        border-radius: 6px !important;
+    }
+
+    .flatpickr-day:hover {
+        background: rgba(6, 182, 212, 0.2) !important;
+    }
+
+    .flatpickr-day.selected {
+        background: var(--accent-cyan) !important;
+        color: white !important;
+    }
+
+    .flatpickr-months .flatpickr-month {
+        color: var(--text-main) !important;
+    }
+
+    .flatpickr-current-month .flatpickr-monthDropdown-months {
+        color: var(--text-main) !important;
+    }
+
+    .flatpickr-weekday {
+        color: var(--text-muted) !important;
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Flatpickr date picker
+    const datePicker = flatpickr("#{{ form.dates.id_for_label }}", {
+        mode: "multiple",
+        dateFormat: "Y-m-d",
+        minDate: new Date().fp_incr(-30), // Allow dates from 30 days ago
+        maxDate: new Date().fp_incr(180), // Allow dates up to 6 months from now
+        disable: [
+            function(date) {
+                // Disable weekends (Saturday = 6, Sunday = 0) - but allow them for holiday reports
+                // return (date.getDay() === 0 || date.getDay() === 6);
+                return false; // Allow all days for holiday reports
+            }
+        ],
+        locale: {
+            firstDayOfWeek: 1 // Start week on Monday
+        },
+        onChange: function(selectedDates, dateStr, instance) {
+            updateSelectedDates(selectedDates);
+        },
+        onReady: function(selectedDates, dateStr, instance) {
+            // Add calendar icon click handler
+            const icon = document.querySelector('.date-picker-icon');
+            if (icon) {
+                icon.addEventListener('click', function() {
+                    instance.open();
+                });
+            }
+        },
+        onOpen: function(selectedDates, dateStr, instance) {
+            // Add a subtle animation to the input
+            const input = instance.input;
+            input.style.boxShadow = '0 0 0 0.2rem rgba(6, 182, 212, 0.25)';
+        },
+        onClose: function(selectedDates, dateStr, instance) {
+            // Remove the animation
+            const input = instance.input;
+            input.style.boxShadow = '';
+        }
+    });
+
+    function updateSelectedDates(selectedDates) {
+        const container = document.getElementById('selected-dates-container');
+        if (selectedDates.length > 0) {
+            container.classList.add('show');
+            let html = '<div class="mb-2"><strong>Selected Dates:</strong></div>';
+            selectedDates.forEach(date => {
+                const dateStr = flatpickr.formatDate(date, "Y-m-d");
+                const dayName = flatpickr.formatDate(date, "l");
+                html += `<span class="date-tag">${dayName}, ${dateStr} <span class="remove-date" data-date="${dateStr}">×</span></span>`;
+            });
+            container.innerHTML = html;
+
+            // Add remove handlers
+            document.querySelectorAll('.remove-date').forEach(removeBtn => {
+                removeBtn.addEventListener('click', function() {
+                    const dateToRemove = this.getAttribute('data-date');
+                    const currentDates = datePicker.selectedDates.filter(date =>
+                        flatpickr.formatDate(date, "Y-m-d") !== dateToRemove
+                    );
+                    datePicker.setDate(currentDates);
+                    updateSelectedDates(currentDates);
+                });
+            });
+        } else {
+            container.classList.remove('show');
+            container.innerHTML = '<small class="text-muted">Selected dates will appear here</small>';
+        }
+    }
+
+    // Add focus effects to form fields
+    const formControls = document.querySelectorAll('.form-control, .form-select');
+    
+    formControls.forEach(control => {
+        control.addEventListener('focus', function() {
+            this.parentElement.classList.add('focused');
+        });
+        
+        control.addEventListener('blur', function() {
+            this.parentElement.classList.remove('focused');
+        });
+    });
+
+    // Auto-resize textarea
+    const textareas = document.querySelectorAll('textarea');
+    textareas.forEach(textarea => {
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = this.scrollHeight + 'px';
+        });
+    });
+
+    // Add visual feedback for form submission
+    const form = document.querySelector('form');
+    const submitBtn = document.querySelector('.btn-submit');
+    
+    form.addEventListener('submit', function() {
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Submitting...';
+        submitBtn.disabled = true;
+    });
+
+    // Enhance subject dropdown with colors
+    const subjectSelect = document.getElementById('{{ form.subject.id_for_label }}');
+    if (subjectSelect) {
+        // Color palette for subjects
+        const colors = [
+            '#06b6d4', // cyan
+            '#a855f7', // purple
+            '#10b981', // emerald
+            '#f59e0b', // amber
+            '#f43f5e', // rose
+            '#3b82f6', // blue
+            '#8b5cf6', // violet
+            '#ec4899', // pink
+            '#84cc16', // lime
+            '#f97316'  // orange
+        ];
+
+        // Function to get color for subject
+        function getSubjectColor(subjectName, subjectCode) {
+            const hash = (subjectName + subjectCode).split('').reduce((a, b) => {
+                a = ((a << 5) - a) + b.charCodeAt(0);
+                return a & a;
+            }, 0);
+            return colors[Math.abs(hash) % colors.length];
+        }
+
+        // Initialize Choices.js
+        const choices = new Choices(subjectSelect, {
+            searchEnabled: true,
+            searchPlaceholderValue: 'Search subjects...',
+            itemSelectText: '',
+            classNames: {
+                containerOuter: 'choices choices-custom',
+                containerInner: 'choices__inner choices__inner-custom',
+                input: 'choices__input choices__input-custom',
+                inputCloned: 'choices__input--cloned',
+                list: 'choices__list choices__list--dropdown',
+                listItems: 'choices__list--multiple',
+                listSingle: 'choices__list--single',
+                listDropdown: 'choices__list--dropdown',
+                item: 'choices__item',
+                itemSelectable: 'choices__item--selectable',
+                itemDisabled: 'choices__item--disabled',
+                itemChoice: 'choices__item--choice',
+                placeholder: 'choices__placeholder',
+                group: 'choices__group',
+                groupHeading: 'choices__heading',
+                button: 'choices__button',
+                activeState: 'is-active',
+                focusState: 'is-focused',
+                openState: 'is-open',
+                disabledState: 'is-disabled',
+                highlightedState: 'is-highlighted',
+                selectedState: 'is-selected',
+                flippedState: 'is-flipped'
+            },
+            callbackOnCreateTemplates: function(template) {
+                return {
+                    item: (classNames, data) => {
+                        const subjectName = data.label.split(' (')[0];
+                        const subjectCode = data.label.split(' (')[1]?.replace(')', '') || '';
+                        const color = getSubjectColor(subjectName, subjectCode);
+                        
+                        return template(`
+                            <div class="${classNames.item} ${data.highlighted ? classNames.highlightedState : classNames.itemSelectable}" 
+                                 data-item data-id="${data.id}" data-value="${data.value}" 
+                                 ${data.active ? 'aria-selected="true"' : ''} 
+                                 ${data.disabled ? 'aria-disabled="true"' : 'aria-selected="false"'}>
+                                <span class="subject-color-indicator" style="background-color: ${color};"></span>
+                                <span class="subject-text">${data.label}</span>
+                            </div>
+                        `);
+                    },
+                    choice: (classNames, data) => {
+                        const subjectName = data.label.split(' (')[0];
+                        const subjectCode = data.label.split(' (')[1]?.replace(')', '') || '';
+                        const color = getSubjectColor(subjectName, subjectCode);
+                        
+                        return template(`
+                            <div class="${classNames.item} ${classNames.itemChoice} ${data.disabled ? classNames.itemDisabled : classNames.itemSelectable}" 
+                                 data-select-text="${this.config.itemSelectText}" 
+                                 data-choice ${data.disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'}
+                                 data-id="${data.id}" data-value="${data.value}" 
+                                 ${data.groupId > 0 ? 'role="treeitem"' : 'role="option"'}>
+                                <span class="subject-color-indicator" style="background-color: ${color};"></span>
+                                <span class="subject-text">${data.label}</span>
+                            </div>
+                        `);
+                    }
+                };
+            }
+        });
+
+        // Add custom CSS for Choices.js
+        const style = document.createElement('style');
+        style.textContent = `
+            .choices-custom .choices__inner {
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 12px;
+                color: var(--text-main);
+                padding: 1rem 1.2rem;
+                min-height: 58px;
+            }
+
+            .choices-custom .choices__inner:focus {
+                background: rgba(255, 255, 255, 0.08);
+                border-color: var(--accent-cyan);
+                box-shadow: 0 0 0 0.2rem rgba(6, 182, 212, 0.25);
+            }
+
+            .choices-custom .choices__list--dropdown .choices__item {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.75rem 1rem;
+                color: var(--text-main);
+            }
+
+            .choices-custom .choices__list--dropdown .choices__item:hover {
+                background: rgba(6, 182, 212, 0.1);
+            }
+
+            .subject-color-indicator {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                flex-shrink: 0;
+                border: 2px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .subject-text {
+                font-weight: 500;
+            }
+
+            .choices-custom .choices__placeholder {
+                color: rgba(161, 161, 170, 0.7);
+                opacity: 1;
+            }
+
+            .choices-custom .choices__input {
+                background: transparent;
+                border: none;
+                color: var(--text-main);
+                font-size: 1rem;
+                padding: 0;
+                margin: 0;
+            }
+
+            .choices-custom .choices__input:focus {
+                box-shadow: none;
+            }
+
+            .choices__list--dropdown {
+                background: var(--bg-glass);
+                backdrop-filter: blur(16px);
+                border: 1px solid var(--border-glass);
+                border-radius: 12px;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+                margin-top: 4px;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="report-container">
+    <div class="report-card">
+        <div class="report-header">
+            <div class="report-icon">
+                <i class="fas fa-calendar-times"></i>
+            </div>
+            <h1 class="report-title">Report Extra Holiday</h1>
+            <p class="report-subtitle">Help us account for unexpected events that affected your classes</p>
+        </div>
+
+        <div class="report-body">
+            <div class="info-alert">
+                <i class="fas fa-info-circle"></i>
+                <p>Report extra holidays caused by unpredictable events like heavy rainfall, lockdowns, or other circumstances that prevented classes from being held.</p>
+            </div>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="form-floating">
+                    <select class="form-select" id="{{ form.subject.id_for_label }}" name="{{ form.subject.name }}" required>
+                        <option value="">Choose a subject...</option>
+                        {% for subject in form.subject.field.queryset %}
+                            <option value="{{ subject.pk }}" 
+                                    data-subject-name="{{ subject.name }}"
+                                    data-subject-code="{{ subject.code }}">
+                                {{ subject.name }} ({{ subject.code }})
+                            </option>
+                        {% endfor %}
+                    </select>
+                    <label for="{{ form.subject.id_for_label }}">
+                        <i class="fas fa-book me-2"></i>{{ form.subject.label }}
+                    </label>
+                    {% if form.subject.errors %}
+                        <div class="text-danger mt-2">{{ form.subject.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-floating date-input-container">
+                    <input type="text" class="form-control date-picker" id="{{ form.dates.id_for_label }}" name="{{ form.dates.name }}" placeholder="Click to select dates..." readonly required>
+                    <label for="{{ form.dates.id_for_label }}">
+                        <i class="fas fa-calendar-alt me-2"></i>{{ form.dates.label }}
+                    </label>
+                    <i class="fas fa-calendar date-picker-icon"></i>
+                    {% if form.dates.errors %}
+                        <div class="text-danger mt-2">{{ form.dates.errors }}</div>
+                    {% endif %}
+                </div>
+                <div class="form-text">
+                    {{ form.dates.help_text }}
+                </div>
+                <div class="selected-dates" id="selected-dates-container">
+                    <small class="text-muted">Selected dates will appear here</small>
+                </div>
+
+                <div class="form-floating reason-container">
+                    <textarea class="form-control" placeholder="Describe the reason for the holiday..." id="{{ form.reason.id_for_label }}" name="{{ form.reason.name }}" style="height: 120px" required></textarea>
+                    <label for="{{ form.reason.id_for_label }}">
+                        <i class="fas fa-comment me-2"></i>{{ form.reason.label }}
+                    </label>
+                    {% if form.reason.errors %}
+                        <div class="text-danger mt-2">{{ form.reason.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="d-flex flex-wrap gap-2 mt-4">
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane me-2"></i>Submit Report
+                    </button>
+                    <a href="{% url 'student_dashboard' %}" class="btn-cancel">
+                        <i class="fas fa-times me-2"></i>Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

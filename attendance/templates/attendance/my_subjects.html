@@ -1,0 +1,215 @@
+{% extends 'attendance/base.html' %}
+
+{% block title %}My Subjects{% endblock %}
+
+{% block extra_css %}
+<style>
+    .page-header {
+        margin-bottom: 2.5rem;
+    }
+    
+    .subject-table-card {
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .table-responsive {
+        border-radius: 20px;
+    }
+
+    .table {
+        margin-bottom: 0;
+        color: var(--text-main);
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+    .table th {
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text-muted);
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        padding: 1.2rem 1.5rem;
+        border: none;
+    }
+
+    .table td {
+        padding: 1.2rem 1.5rem;
+        vertical-align: middle;
+        border-top: 1px solid var(--border-glass);
+        background: transparent;
+        transition: all 0.2s ease;
+    }
+
+    .table tr:hover td {
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    .subject-name {
+        font-weight: 700;
+        color: var(--accent-cyan);
+        font-size: 1rem;
+    }
+
+    .stat-badge {
+        font-weight: 800;
+        font-size: 1.1rem;
+    }
+
+    .target-input {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border-glass);
+        border-radius: 8px;
+        color: var(--text-main);
+        width: 70px;
+        text-align: center;
+        padding: 0.4rem;
+        font-weight: 700;
+        transition: all 0.3s;
+    }
+
+    .target-input:focus {
+        outline: none;
+        border-color: var(--accent-cyan);
+        background: rgba(6, 182, 212, 0.1);
+    }
+
+    .bunk-status {
+        padding: 0.5rem 1rem;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        display: inline-block;
+    }
+
+    .add-subject-form {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 1rem;
+        align-items: flex-end;
+    }
+
+    @media (max-width: 768px) {
+        .add-subject-form {
+            grid-template-columns: 1fr;
+        }
+        .table th:nth-child(2), .table td:nth-child(2),
+        .table th:nth-child(3), .table td:nth-child(3) {
+            display: none; /* Hide Present/Absent on small mobile */
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 style="font-weight: 800; letter-spacing: -1px;">Academic Portfolio</h1>
+    <p class="text-muted">Manage your enrolled subjects and attendance targets</p>
+</div>
+
+<!-- Enroll New Subject -->
+<div class="glass-card p-4 mb-4">
+    <h4 class="mb-4" style="font-weight: 700;"><i class="fas fa-plus-circle text-purple me-2"></i>Enroll New Subject</h4>
+    <form method="POST" action="{% url 'add_subject' %}" class="add-subject-form">
+        {% csrf_token %}
+        <div class="flex-grow-1">
+            <label class="form-label text-muted small fw-bold">SELECT SUBJECT</label>
+            <select name="subject_id" required class="form-select bg-dark border-secondary text-white p-3" style="border-radius: 12px;">
+                <option value="" disabled selected>Choose a subject to enroll...</option>
+                {% for subject in available_subjects %}
+                <option value="{{ subject.id }}">{{ subject.name }} (Sem {{ subject.semester }})</option>
+                {% empty %}
+                <option value="" disabled>No more subjects available for your semester</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn-premium px-5" style="height: 58px;" {% if not available_subjects %}disabled{% endif %}>
+            <i class="fas fa-check me-2"></i> Enroll Now
+        </button>
+    </form>
+</div>
+
+<!-- Enrolled Subjects Table -->
+<div class="glass-card subject-table-card">
+    <div class="p-4 border-bottom border-light border-opacity-10 d-flex justify-content-between align-items-center">
+        <h4 class="mb-0" style="font-weight: 700;"><i class="fas fa-book-open text-cyan me-2"></i>Active Enrollments</h4>
+        <span class="badge bg-cyan bg-opacity-10 text-cyan px-3 py-2" style="border-radius: 8px;">{{ enrollments|length }} Subjects</span>
+    </div>
+    
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th class="text-center">Present</th>
+                    <th class="text-center">Absent</th>
+                    <th class="text-center">Attendance</th>
+                    <th class="text-center">Total Classes</th>
+                    <th class="text-center">Target %</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for enrollment in enrollments %}
+                <tr style="cursor: pointer;" data-url="{% url 'subject_calendar' enrollment.subject.id %}" onclick="window.location.href=this.dataset.url">
+                    <td>
+                        <div class="subject-name">{{ enrollment.subject.name }}</div>
+                    </td>
+                    <td class="text-center">
+                        <span class="stat-badge text-emerald">{{ enrollment.present_count|default:0 }}</span>
+                    </td>
+                    <td class="text-center">
+                        <span class="stat-badge text-rose">{{ enrollment.absent_count|default:0 }}</span>
+                    </td>
+                    <td class="text-center">
+                        <div class="fw-bold fs-5 {% if enrollment.attendance_percentage < enrollment.target_percentage %}text-rose{% else %}text-emerald{% endif %}">
+                            {{ enrollment.attendance_percentage }}%
+                        </div>
+                        <div class="text-muted" style="font-size: 0.7rem;">Held: {{ enrollment.total_classes_held|default:0 }}</div>
+                    </td>
+                    <td class="text-center" onclick="event.stopPropagation()">
+                        <form method="POST" action="{% url 'update_target' enrollment.id %}" class="d-flex align-items-center justify-content-center gap-2">
+                            {% csrf_token %}
+                            <div style="width: 70px;">
+                                <label class="small text-muted d-block" style="font-size: 0.6rem;">CLASSES</label>
+                                <input type="number" name="total_classes" value="{{ enrollment.total_classes }}" min="1" class="target-input w-100">
+                            </div>
+                            <div style="width: 70px;">
+                                <label class="small text-muted d-block" style="font-size: 0.6rem;">TARGET %</label>
+                                <input type="number" name="target_percentage" value="{{ enrollment.target_percentage }}" min="1" max="100" class="target-input w-100">
+                            </div>
+                            <button type="submit" class="btn btn-sm text-cyan p-0 fs-5 align-self-end mb-1" title="Save Changes">
+                                <i class="fas fa-save"></i>
+                            </button>
+                        </form>
+                    </td>
+                    <td class="text-center">
+                        <div class="bunk-status bg-success bg-opacity-10 text-emerald">
+                            Bunk Balance: {{ enrollment.bunkable }}
+                        </div>
+                    </td>
+                    <td class="text-center" onclick="event.stopPropagation()">
+                        <a href="{% url 'unenroll_subject' enrollment.id %}" 
+                           class="btn btn-sm text-rose p-0 fs-5" 
+                           title="Unenroll Subject"
+                           onclick="return confirm('Are you sure you want to unenroll from {{ enrollment.subject.name }}? All your local attendance records for this subject will be kept but this enrollment will be removed.')">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="8" class="text-center py-5">
+                        <div class="opacity-25 mb-3"><i class="fas fa-folder-open fa-3x"></i></div>
+                        <p class="text-muted mb-0">No enrolled subjects found. Enroll in one above!</p>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
