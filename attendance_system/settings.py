@@ -20,8 +20,10 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-default-key-ch
 DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = [
+    'attendance-system-xjd0.onrender.com',
     'attendance-system-iter.onrender.com', 
     'attendance-system.railway.app',
+    '*.onrender.com',
     '127.0.0.1',
     'localhost'
 ]
