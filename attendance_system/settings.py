@@ -122,7 +122,7 @@ MESSAGE_TAGS = {
 }
 
 # External APIs
-GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', 'AIzaSyAhIcO_iCl1FMd79lBkIhNHuuRC1Cm5bC4')
+GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
 OCR_API_KEY = os.environ.get('OCR_API_KEY', 'K82079898488957')
 
 # CSRF Trusted Origins for production
